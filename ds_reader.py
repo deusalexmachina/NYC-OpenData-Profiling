@@ -11,7 +11,7 @@ from pyspark.sql import DataFrame, SparkSession
 
 def datasets_to_dataframes(ds_path: str) -> List[DataFrame]:
     '''
-    datasets_to_dataframes takes the path to the directory that holds all of the datasets and converts every .tsv file in that directory to a dataframe. 
+    datasets_to_dataframes takes the path to the directory that holds all of the datasets and converts every .tsv file in that directory to a dataframe (except the meta file "datasets.tsv"). 
     It outputs the dataframes in a list
     '''
     files: List[str] = [
