@@ -14,13 +14,15 @@ def datasets_to_dataframes(ds_path: str) -> List[DataFrame]:
     datasets_to_dataframes takes the path to the directory that holds all of the datasets and converts every .tsv file in that directory to a dataframe. 
     It outputs the dataframes in a list
     '''
-    files: List[str] = [ds_path + '/' + rel_path for rel_path in listdir(ds_path)
-                        if splitext(rel_path)[-1] == ".tsv"]
+    files: List[str] = [
+        ds_path + '/' + rel_path for rel_path in listdir(ds_path)
+        if splitext(rel_path)[-1] == ".tsv" and rel_path != "datasets.tsv"]
 
     dfs: List[DataFrame] = []
     for path in files:
-        dfs.append(spark.read.load(path, format="csv",
-                                   delim="\t", header=True, inferSchema=True))
+        dfs.append(
+            spark.read.csv(
+                path, sep="\t", header=True, inferSchema=True))
 
     return dfs
 
@@ -30,4 +32,4 @@ if __name__ == '__main__':
 
     dfs: List[DataFrame] = datasets_to_dataframes(sys.argv[1])
     for df in dfs:
-        print(df.schema)
+        df.printSchema()
