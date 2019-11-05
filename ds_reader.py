@@ -13,7 +13,7 @@ from pyspark.sql import DataFrame, SparkSession
 
 def datasets_to_dataframes(ds_path: str) -> List[DataFrame]:
     '''
-    datasets_to_dataframes takes the path to the directory that holds all of the datasets and converts every .tsv file in that directory to a dataframe (except the meta file "datasets.tsv"). 
+    datasets_to_dataframes takes the path to the hdfs directory that holds all of the datasets and converts every .tsv file in that directory to a dataframe (except the meta file "datasets.tsv"). 
     It outputs the dataframes in a list
     '''
     cmd: List[str] = f'hdfs dfs -ls -C {str(ds_path)}'.split(' ') # cmd to get list of files in hdfs dir
