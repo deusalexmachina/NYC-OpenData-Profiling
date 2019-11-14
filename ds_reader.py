@@ -2,39 +2,69 @@
 
 # Goal: read in the datasets and create rdd's out of them
 
-from typing import List
+from typing import List, Generator, Iterable
 
 import sys
 from os.path import splitext, basename
 import subprocess
+import gzip
 
 from pyspark.sql import DataFrame, SparkSession
 
+# hdfs commands to interact with the hdfs outside of Spark
+HDFS_LIST_DIR = 'hdfs dfs -ls -C {ds_path}'
 
-def datasets_to_dataframes(ds_path: str) -> List[DataFrame]:
-    '''
-    datasets_to_dataframes takes the path to the hdfs directory that holds all of the datasets and converts every .tsv file in that directory to a dataframe (except the meta file "datasets.tsv"). 
-    It outputs the dataframes in a list
-    '''
-    cmd: List[str] = f'hdfs dfs -ls -C {str(ds_path)}'.split(' ') # cmd to get list of files in hdfs dir
-    files: List[str] = subprocess.check_output(cmd).decode('ASCII').strip().split('\n') # sanitize output into list of strings
 
+def run_hdfs_cmd(cmd: str) -> bytes:
+    """
+    allows an arbitrary hdfs command to be run
+    """
+    cmd: List[str] = cmd.split(' ')
+    return subprocess.check_output(cmd)
+
+
+def get_ds_file_names(ds_path: str) -> List[str]:
+    """
+    get the file names of compressed (.gz) datasets in the directory
+    """
+    # cmd to get list of files in hdfs dir
+    files = run_hdfs_cmd(HDFS_LIST_DIR.format(ds_path=ds_path)).decode(
+        'ASCII').strip().split('\n')  # sanitize output into list of strings
+
+    # filter files
     files: List[str] = [
         ds_path + '/' + basename(rel_path) for rel_path in files
-        if splitext(rel_path)[-1] == ".tsv" and rel_path != "datasets.tsv"]
+        if splitext(rel_path)[-1] == ".gz" and basename(rel_path)
+        != "datasets.tsv.gz"]
 
-    dfs: List[DataFrame] = []
+    return files
+
+
+def generate_dataframes(files: Iterable[str]) -> Generator[DataFrame, None, None]:
+    """
+    takes a list of .gz dataset filenames on the hdfs and reads them into a Spark DataFrame (Spark does decompression).
+    because it returns a generator, the above process occurs lazily per dataset
+    """
     for path in files:
-        dfs.append(
-            spark.read.csv(
-                path, sep="\t", header=True, inferSchema=True))
+        # read uncompressed csv file
+        yield spark.read.csv(path, sep="\t", header=True, inferSchema=True)
 
-    return dfs
+
+def datasets_to_dataframes(ds_path: str) -> Generator[DataFrame, None, None]:
+    """
+    datasets_to_dataframes takes the path to the hdfs directory that holds all of the datasets, reads them into dataframes (except the meta file "datasets.tsv"). 
+    it outputs the dataframes in a generator. a generator is a lazily evaluated iterator, which allows the dataset to be read (and stored in memory) only when requested (i.e. iterated in a for loop).
+    using this pattern, n datasets can be read into mem at a time and operated on
+    """
+    files: List[str] = get_ds_file_names(ds_path)
+    df_generator = generate_dataframes(files)
+
+    return df_generator
 
 
 if __name__ == '__main__':
     spark = SparkSession.builder.getOrCreate()
 
-    dfs: List[DataFrame] = datasets_to_dataframes(sys.argv[1])
+    dfs: Generator[DataFrame, None, None] = datasets_to_dataframes(sys.argv[1])
     for df in dfs:
         df.printSchema()
