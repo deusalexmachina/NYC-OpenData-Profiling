@@ -63,14 +63,34 @@ def datasets_to_dataframes(ds_path: str) -> Union[int, Generator[DataFrame, None
 
 
 if __name__ == '__main__':
+    # use cli as "ds_reader.py <hdfs dir> <limit> <print>" where limit is an optional int and print is the optional string "print"
     spark = SparkSession.builder.getOrCreate()
 
     time_start = time.time()
     
     len_dfs, dfs = datasets_to_dataframes(sys.argv[1])
+
+    # get limit
+    limit = len_dfs
+    try:
+        limit = int(sys.argv[2])
+    except Exception:
+        pass
+
+    # get print
+    print_schema = ''
+    try:
+        print_schema = sys.argv[2]
+        print_schema = sys.argv[3]
+    except Exception:
+        pass
     
-    for df in dfs:
-        df.printSchema()
+    for i, df in enumerate(dfs):
+        if print_schema == 'print':
+            df.printSchema()
+        if i >= limit:
+            len_dfs = limit
+            break
     
     time_end = time.time()
     timed = time_end - time_start
