@@ -88,7 +88,7 @@ if __name__ == '__main__':
     for i, df in enumerate(dfs):
         if print_schema == 'print':
             df.printSchema()
-        if i >= limit:
+        if i >= limit - 1:
             len_dfs = limit
             break
     
