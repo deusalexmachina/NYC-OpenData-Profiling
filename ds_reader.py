@@ -40,7 +40,7 @@ def get_ds_file_names(ds_path: str) -> List[str]:
     return files
 
 
-def generate_dataframes(files: Iterable[str]) -> Generator[DataFrame, None, None]:
+def generate_dataframes(spark: SparkSession, files: Iterable[str]) -> Generator[DataFrame, None, None]:
     """
     takes a list of .gz dataset filenames on the hdfs and reads them into a Spark DataFrame (Spark does decompression).
     because it returns a generator, the above process occurs lazily per dataset
@@ -50,14 +50,14 @@ def generate_dataframes(files: Iterable[str]) -> Generator[DataFrame, None, None
         yield spark.read.csv(path, sep="\t", header=True, inferSchema=True)
 
 
-def datasets_to_dataframes(ds_path: str) -> Union[int, Generator[DataFrame, None, None]]:
+def datasets_to_dataframes(spark: SparkSession, ds_path: str) -> Union[int, Generator[DataFrame, None, None]]:
     """
     datasets_to_dataframes takes the path to the hdfs directory that holds all of the datasets, reads them into dataframes (except the meta file "datasets.tsv"). 
     it outputs the dataframes in a generator. a generator is a lazily evaluated iterator, which allows the dataset to be read (and stored in memory) only when requested (i.e. iterated in a for loop).
     using this pattern, n datasets can be read into mem at a time and operated on
     """
     files: List[str] = get_ds_file_names(ds_path)
-    df_generator = generate_dataframes(files)
+    df_generator = generate_dataframes(spark, files)
 
     return len(files), df_generator
 
@@ -68,7 +68,7 @@ if __name__ == '__main__':
 
     time_start = time.time()
     
-    len_dfs, dfs = datasets_to_dataframes(sys.argv[1])
+    len_dfs, dfs = datasets_to_dataframes(spark, sys.argv[1])
 
     # get limit
     limit = len_dfs
