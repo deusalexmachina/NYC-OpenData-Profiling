@@ -47,7 +47,9 @@ def generate_dataframes(spark: SparkSession, files: Iterable[str]) -> Generator[
     """
     for path in files:
         # read compressed tsv file
-        yield spark.read.csv(path, sep="\t", header=True, inferSchema=True)
+        df = spark.read.csv(path, sep="\t", header=True, inferSchema=True)
+        df.ds_name = basename(path)
+        yield df
 
 
 def datasets_to_dataframes(spark: SparkSession, ds_path: str) -> Union[int, Generator[DataFrame, None, None]]:
