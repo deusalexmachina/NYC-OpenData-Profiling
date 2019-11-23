@@ -16,8 +16,8 @@ OUTPUT_KEY = 'columns' # key mapped to a dataset which holds the column output (
 
 def map_cols(df: DataFrame) -> Column:
     """
-    maps column names to column values using Spark's MapType. A column of Spark "Maps" is returned where each row represents a Map like {column_name: [column_vals]...}.
-    It then explodes (flattens) the output of map_cols so that each row maps one column_name to one column_value, i.e. [col1: val1, col1: val2...]
+    maps column names to column values using Spark's MapType. A column of Spark "Maps" is returned where each row represents a Map like Column{column_name: [column_vals]...}.
+    It then explodes (flattens) the output of map_cols so that each row maps one column_name to one column_value, i.e. Column[{col1: val1}, {col1: val2}...]
     Spark "Column" (of dataset columns) is returned 
     """
 
@@ -240,5 +240,5 @@ if __name__ == '__main__':
     print("max runtime for dct:", max_dct)
 
     print('total runtime:', total_runtime)
-    print('avg runtime (including load):', total_runtime / (i + 1))
+    print('avg runtime (including load):', total_runtime / (i + 1)) # generally around 15 seconds assuming server isn't congested
     exit(0)
