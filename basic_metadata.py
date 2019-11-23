@@ -16,10 +16,11 @@ OUTPUT_KEY = 'columns'
 
 def map_cols(df: DataFrame) -> Column:
     """
-    maps column names to column values using Spark's MapType. A column of Maps is returned where each row represents a map like {column_name: [column_vals]}
+    maps column names to column values using Spark's MapType. A column of Maps is returned where each row represents a map like {column_name: [column_vals]}.
+    then explodes (flattens) the output of map_cols so that each row maps one column_name to one column_value.
     """
 
-    return df.select(
+    df_mapped_cols = df.select(
         create_map(
             *
             [j
@@ -29,16 +30,20 @@ def map_cols(df: DataFrame) -> Column:
                spark_col(col)] for col in df.columns] for j in
              l]))
 
+    df_exploded_cols = df_mapped_cols.select(
+        explode(*df_mapped_cols.columns))
+
+    return df_exploded_cols
+
 
 def reduce_col(df_cols: Union[DataFrame, Column],
                agg_name: str, aggFunc: Callable, other_groupBy_keys: Iterable[Column] = []) -> DataFrame:
     """
-    explodes (flattens) the output of map_cols so that each row maps one column_name to one column_value. it then groups by column name using the aggFunc.
+    accepts map_cols output and groups by column name using the aggFunc.
     agg_name is later in append_output as a key to get the outputs out. 
     other_groupBy_keys is a list of other groupby keys and is used in cases such as getting the top 5 frequent vals
     """
-    return df_cols.select(
-        explode(*df_cols.columns)).groupBy(
+    return df_cols.groupBy(
         spark_col("key").alias("col_name"), *other_groupBy_keys).agg(
         aggFunc("value").alias(agg_name))
 
