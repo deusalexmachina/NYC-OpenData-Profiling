@@ -64,20 +64,8 @@ def datasets_to_dataframes(spark: SparkSession, ds_path: str) -> Union[int, Gene
     return len(files), df_generator
 
 
-if __name__ == '__main__':
-    # use cli as "ds_reader.py <hdfs dir> <limit> <print>" where limit is an optional int and print is the optional string "print"
-    spark = SparkSession.builder.getOrCreate()
-
-    time_start = time.time()
-    
-    len_dfs, dfs = datasets_to_dataframes(spark, sys.argv[1])
-
-    # get limit
-    limit = len_dfs
-    try:
-        limit = int(sys.argv[2])
-    except Exception:
-        pass
+def test():
+    from timing import timed
 
     # get print
     print_schema = ''
@@ -87,13 +75,13 @@ if __name__ == '__main__':
     except Exception:
         pass
     
-    for i, df in enumerate(dfs):
+    def run(df):
         if print_schema == 'print':
             df.printSchema()
-        if i >= limit - 1:
-            len_dfs = limit
-            break
+
+    timed(run)
+
     
-    time_end = time.time()
-    timed = time_end - time_start
-    print(f'time to load {len_dfs} dfs (secs): {timed}')
+if __name__ == '__main__':
+    # use cli as "ds_reader.py <hdfs dir> <limit> <print>" where limit is an optional int and print is the optional string "print"
+    test()
