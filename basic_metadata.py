@@ -2,7 +2,7 @@ import sys
 
 from ds_reader import datasets_to_dataframes
 
-from pyspark.sql import SparkSession, DataFrame, Column, Row
+from pyspark.sql import DataFrame, Column, Row
 from pyspark.sql.functions import countDistinct, create_map, lit, col, explode, count, when, isnan, isnull, sum, collect_list, udf
 from pyspark.sql.types import ArrayType, StringType
 
@@ -135,7 +135,7 @@ def get_val_from_single_val_col(df: Column):
     return list(df.collect()[0].asDict().values())[0]
 
 
-def __test(dfs):
+def __test_compare(dfs):
     """
     compare Spark implementation to naive one (iterate over each row with python) for count_distinct
     """
@@ -179,22 +179,16 @@ def __test(dfs):
             exit(0)
 
 
-if __name__ == '__main__':
-    spark = SparkSession.builder.getOrCreate()
-
-    len_dfs, dfs = datasets_to_dataframes(spark, sys.argv[1])
-    limit = 3
-
-    max_time = 0
-    max_dct = None
-
-    start_all_time = time.time()
+def test():
+    """
+    test_timing with standardized interface in timing module
+    """
+    from timing import timed
 
     # master_dct contains all output to be used in json
     master_dct = {}
-    for i, df in enumerate(dfs):
-        start = time.time()
 
+    def run(df):
         ### MAIN ###
         # dct belongs to a dataset
         dct = {
@@ -202,8 +196,8 @@ if __name__ == '__main__':
             OUTPUT_KEY: {}
         }
         df_cols = map_cols(df)
-        get_basic_metadata(df_cols, dct) # main driver
-        
+        get_basic_metadata(df_cols, dct)  # main driver
+
         ### test num_cells (counts) ###
         # rows = reduce_cols(df_cols, 'number_cells', lambda c: sum(lit(1)))
         # append_output(dct, 'number_cells', rows)
@@ -213,32 +207,19 @@ if __name__ == '__main__':
         #         raise ValueError('Error in dataset: {}. Column: {}'.format(
         #             dct.keys()[0], str(dct[OUTPUT_KEY][col])))
 
-        master_dct.update({dct['dataset_name']: dct}) # update master_dct with dataset
+        # update master_dct with dataset
+        master_dct.update({dct['dataset_name']: dct})
 
-        end = time.time()
-        timed = end-start
-        print("runtime:", timed)  # DEBUG
-        # print("dct:", dct)  # DEBUG
+        return dct
 
-        if timed > max_time:
-            max_time = timed
-            max_dct = dct
+    timed(run)
 
-        # DEBUG
-        if i >= limit - 1:
-            break
+    # DEBUG print all output
+    # print()
+    # print("### MASTER_DCT###")
+    # print(master_dct)
 
-    
-    total_runtime = end-start_all_time
 
-    print()
-    print("### MASTER_DCT###")
-    print(master_dct)
-    print()
-    print("### SUMMARY ###")
-    print("max runtime:", max_time)
-    print("max runtime for dct:", max_dct)
-
-    print('total runtime:', total_runtime)
-    print('avg runtime (including load):', total_runtime / (i + 1))
-    exit(0)
+if __name__ == '__main__':
+    # use cli as "ds_reader.py <hdfs dir> <limit>" where limit is an optional int
+    test()
