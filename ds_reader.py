@@ -13,6 +13,7 @@ from pyspark.sql import DataFrame, SparkSession
 
 # hdfs commands to interact with the hdfs outside of Spark
 HDFS_LIST_DIR = 'hdfs dfs -ls -C {ds_path}'
+HDFS_SIZE_F = 'hdfs dfs -stat %b {ds_path}'
 
 
 def run_hdfs_cmd(cmd: str) -> bytes:
@@ -20,7 +21,7 @@ def run_hdfs_cmd(cmd: str) -> bytes:
     allows an arbitrary hdfs command to be run
     """
     cmd: List[str] = cmd.split(' ')
-    return subprocess.check_output(cmd)
+    return subprocess.check_output(cmd).decode('utf_8').strip()
 
 
 def get_ds_file_names(ds_path: str) -> List[str]:
@@ -28,8 +29,7 @@ def get_ds_file_names(ds_path: str) -> List[str]:
     get the file names of compressed (.gz) datasets in the directory
     """
     # cmd to get list of files in hdfs dir
-    files = run_hdfs_cmd(HDFS_LIST_DIR.format(ds_path=ds_path)).decode(
-        'ASCII').strip().split('\n')  # sanitize output into list of strings
+    files = run_hdfs_cmd(HDFS_LIST_DIR.format(ds_path=ds_path)).split('\n')  # sanitize output into list of strings
 
     # filter files
     files: List[str] = [
@@ -43,13 +43,20 @@ def get_ds_file_names(ds_path: str) -> List[str]:
 def generate_dataframes(spark: SparkSession, files: Iterable[str]) -> Generator[DataFrame, None, None]:
     """
     takes a list of .gz dataset filenames on the hdfs and reads them into a Spark DataFrame (Spark does decompression).
+    skips files that may be decompressed to larger than 2.5GB.
     because it returns a generator, the above process occurs lazily per dataset
     """
     for path in files:
-        # read compressed tsv file
-        df = spark.read.csv(path, sep="\t", header=True, inferSchema=True)
-        df.ds_name = basename(path)
-        yield df
+        if int(run_hdfs_cmd(HDFS_SIZE_F.format(ds_path=path))) < 6e+8:  # 600MB
+            # read compressed tsv file
+            df = spark.read.csv(path, sep="\t", header=True, inferSchema=True)
+            df.ds_name = basename(path)
+            yield df
+        else:
+            try:
+                raise MemoryError(f'{path}: large compressed file size that may decompress to +2.5GB')
+            except MemoryError as e:
+                print(e)
 
 
 def datasets_to_dataframes(spark: SparkSession, ds_path: str) -> Union[int, Generator[DataFrame, None, None]]:
