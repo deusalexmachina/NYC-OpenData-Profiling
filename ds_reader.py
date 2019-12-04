@@ -59,6 +59,17 @@ def datasets_to_dataframes(spark: SparkSession, ds_path: str) -> Union[int, Gene
     using this pattern, n datasets can be read into mem at a time and operated on
     """
     files: List[str] = get_ds_file_names(ds_path)
+
+    return datasets_to_dataframes_select(spark, files)
+
+
+def datasets_to_dataframes_select(spark: SparkSession, files: List[str]) -> Union[int,
+                                                                       Generator[DataFrame, None, None]]:
+    """
+    datasets_to_dataframes takes a list of files in the hdfs, and reads the files into dataframes.
+    it outputs the dataframes in a generator. a generator is a lazily evaluated iterator, which allows the dataset to be read (and stored in memory) only when requested (i.e. iterated in a for loop).
+    using this pattern, n datasets can be read into mem at a time and operated on
+    """
     df_generator = generate_dataframes(spark, files)
 
     return len(files), df_generator
