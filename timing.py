@@ -1,25 +1,33 @@
-from ds_reader import datasets_to_dataframes
+from ds_reader import datasets_to_dataframes, datasets_to_dataframes_select
 
 from pyspark.sql import SparkSession
 
 import time
 import sys
 
+from typing import List
 
-def timed(fn, *args, **kwargs):
+
+def timed(fn, files: List[str]=None) -> None:
     """
     a standardized interface for timing some function fn which accepts a df and potentially other args and kwargs. 
-    it calculates runtimes and avg runtimes while iterating through the df generator and calling fn, and prints them
+    it calculates runtimes and avg runtimes while iterating through the df generator and calling fn, and prints them.
     """
     spark = SparkSession.builder.getOrCreate()  # init spark
 
     time_start_all = time.time()
+    time_end = time_start_all
     total_runtime = 0
     total_runtime_load = 0
     max_runtime = 0
     max_output = None
 
-    len_dfs, dfs = datasets_to_dataframes(spark, sys.argv[1])
+    len_dfs = 0
+    dfs = None
+    if files is None:
+        len_dfs, dfs = datasets_to_dataframes(spark, sys.argv[1])
+    else:
+        len_dfs, dfs = datasets_to_dataframes_select(spark, files)
 
     try:
         limit = int(sys.argv[2])
@@ -30,7 +38,13 @@ def timed(fn, *args, **kwargs):
         actual_len_dfs = i+1
 
         time_start = time.time()
-        output = fn(df, *args, **kwargs)
+        output = fn(df)
+
+        # try:
+        #     output = fn(df)
+        # except Exception as e:
+        #     print(e)
+        #     continue
         time_end = time.time()
 
         # specific to current ds
