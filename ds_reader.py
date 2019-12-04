@@ -8,6 +8,7 @@ import sys
 from os.path import splitext, basename
 import subprocess
 import time
+import random
 
 from pyspark.sql import DataFrame, SparkSession
 
@@ -59,13 +60,15 @@ def generate_dataframes(spark: SparkSession, files: Iterable[str]) -> Generator[
                 print(e)
 
 
-def datasets_to_dataframes(spark: SparkSession, ds_path: str) -> Union[int, Generator[DataFrame, None, None]]:
+def datasets_to_dataframes(spark: SparkSession, ds_path: str, rand: bool = False) -> Union[int, Generator[DataFrame, None, None]]:
     """
     datasets_to_dataframes takes the path to the hdfs directory that holds all of the datasets, reads them into dataframes (except the meta file "datasets.tsv"). 
     it outputs the dataframes in a generator. a generator is a lazily evaluated iterator, which allows the dataset to be read (and stored in memory) only when requested (i.e. iterated in a for loop).
     using this pattern, n datasets can be read into mem at a time and operated on
     """
     files: List[str] = get_ds_file_names(ds_path)
+    if rand:
+        random.shuffle(files)
 
     return datasets_to_dataframes_select(spark, files)
 
@@ -88,9 +91,8 @@ def test():
     # get print
     print_schema = ''
     try:
-        print_schema = sys.argv[2]
-        print_schema = sys.argv[3]
-    except Exception:
+        print_schema = sys.argv[4]
+    except IndexError:
         pass
     
     def run(df):
