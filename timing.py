@@ -1,6 +1,7 @@
 from ds_reader import datasets_to_dataframes, datasets_to_dataframes_select
 
 from pyspark.sql import SparkSession
+from pyspark.sql import utils
 
 import time
 import sys
@@ -8,10 +9,14 @@ import sys
 from typing import List
 
 
-def timed(fn, files: List[str]=None) -> None:
+def timed(fn, files: List[str] = None) -> None:
     """
     a standardized interface for timing some function fn which accepts a df and potentially other args and kwargs. 
     it calculates runtimes and avg runtimes while iterating through the df generator and calling fn, and prints them.
+
+    when this is called by another module, use sys.argv[1] for the limit and sys.arv[2] for selecting random datasets. 
+    to not set an option, pass in '-'.
+    example from cli: `./env.sh "basic_metadata.py - rand"`
     """
     spark = SparkSession.builder.getOrCreate()  # init spark
 
@@ -25,26 +30,34 @@ def timed(fn, files: List[str]=None) -> None:
     len_dfs = 0
     dfs = None
     if files is None:
-        len_dfs, dfs = datasets_to_dataframes(spark, sys.argv[1])
+        rand = False
+        try:
+            try:
+                rand = bool(sys.argv[3])
+            except (IndexError, ValueError):
+                pass
+            limit = int(sys.argv[2])
+        except (IndexError, ValueError):
+            limit = len_dfs
+
+        len_dfs, dfs = datasets_to_dataframes(spark, sys.argv[1], rand)
     else:
         len_dfs, dfs = datasets_to_dataframes_select(spark, files)
 
-    try:
-        limit = int(sys.argv[2])
-    except IndexError:
-        limit = len_dfs
+    actual_len_dfs = len_dfs
 
     for i, df in enumerate(dfs):
+        print(f"### i: {i}, ds: {df.ds_name} ###")
+
         actual_len_dfs = i+1
 
         time_start = time.time()
-        output = fn(df)
-
-        # try:
-        #     output = fn(df)
-        # except Exception as e:
-        #     print(e)
-        #     continue
+        # output = fn(df)
+        try:
+            output = fn(df)
+        except utils.AnalysisException as e:
+            print(e)
+            continue
         time_end = time.time()
 
         # specific to current ds
@@ -66,7 +79,7 @@ def timed(fn, files: List[str]=None) -> None:
     total_runtime_load = time_end - time_start_all
 
     print()
-    print("### SUMMARY ###")
+    print(f"### SUMMARY FOR {actual_len_dfs} DATASETS ###")
     print("max runtime:", max_runtime)
     if max_output is not None:
         print("max output:", max_output)
