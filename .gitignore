@@ -4,3 +4,4 @@ test_code.md
 __pycache__
 *.xlsx
 *.csv
+_*test.*
