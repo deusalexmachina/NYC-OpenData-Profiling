@@ -26,3 +26,18 @@ def get_limit_arg(i=2) -> Union[int, None]:
         limit = None
 
     return limit
+
+
+def get_ds_path_arg(i=1) -> Union[str, None]:
+    """
+    limit argument to limit the number of datasets run
+    """
+    try:
+        path = str(sys.argv[i])
+    except (IndexError, ValueError):
+        path = None
+
+    if path is not '-':
+        return path
+    else:
+        return None
