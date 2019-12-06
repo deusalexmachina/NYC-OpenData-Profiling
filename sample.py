@@ -11,9 +11,10 @@ from typing import Union, List, Tuple, Dict, Any
 import sys
 import os.path
 
-from cli import get_rand_arg
+from cli import get_rand_arg, get_ds_path_arg
 import random
 
+from similarity import match_preprocess, match_jacc, COL
 
 def get_counts(df_cols: Union[DataFrame, Column]) -> DataFrame:
     df_output = reduce_cols(df_cols, 'count', count, other_groupBy_keys=[
@@ -79,20 +80,6 @@ def get_task2_dfs(ds_path) -> List[Tuple[str, str]]:
     return gz_paths_cols
 
 
-def comp_letters(s1, s2):
-    """
-    test two strings for whether they are identical by removing all chars but letters and testing whether either is contained in the other
-    """
-    remove_chars = string.punctuation + string.whitespace
-
-    s1_translated = s1.translate(
-        str.maketrans('', '', remove_chars))
-    s2_translated = s2.translate(
-        str.maketrans('', '', remove_chars))
-
-    return (s1_translated in s2_translated) or (s2_translated in s1_translated)
-
-
 def t2_get_n_frequents(gz_paths_cols: List[Tuple[str, str]],
                        top_n: int = 10) -> Union[List[str],
                                                  List[Dict[str, Any]],
@@ -114,40 +101,38 @@ def t2_get_n_frequents(gz_paths_cols: List[Tuple[str, str]],
     cols: List[str] = [cols for _, cols in gz_paths_cols]
 
     records = []
-    i = 0
     missing = set()
 
     columns = None
 
-    def _run(df):
+    def _run(df, i):
         nonlocal records
-        nonlocal i
         nonlocal missing
         nonlocal columns
 
-        print('i: ', i, "ds_path:", gz_paths[i], "col_name:", cols[i])
+        print("col_name:", cols[i])
 
         # match cols (they removed replaced space in column names when saving them to the file name)
         col = cols[i]
         ds_name = os.path.basename(gz_paths[i])
 
-        for c in df.columns:
-            if comp_letters(cols[i], c):
-                col = c
-                break
+        result = match_preprocess(cols[i], {'foo': df.columns}, match_jacc)
+        if result is not None:
+            c = result[COL]
+            print('found:', c)
+            col = c
 
         try:
             df = df.select(spark_col(col))  # remove all but col of interest
         except Exception:
-            missing.add({'ds_name': ds_name, 'col_name_(ta)': cols[i]})
-            i += 1
+            missing.add(str({'ds_name': ds_name, 'col_name_ta': cols[i]}))
             raise ValueError(
                 'missing:', (ds_name, cols[i]),
                 'cols:', df.columns)
         df_cols = map_cols(df)
         df_counts = get_counts(df_cols)
         df_output = get_n_freq_str(df_counts, top_n)
-        df_output = df_output.select(lit(ds_name).alias('ds_path'), '*')
+        df_output = df_output.select(lit(ds_name).alias('ds_path'), lit(cols[i]).alias('col_name_ta'), '*')
 
         if columns is None:
             columns = df_output.columns
@@ -155,36 +140,31 @@ def t2_get_n_frequents(gz_paths_cols: List[Tuple[str, str]],
         # concat
         records.append([row.asDict() for row in df_output.collect()][0])
 
-        i += 1
-
         return df_output
 
     timed(_run, gz_paths)
 
-    print('missing:', missing)
-
-    return columns, records, List(missing)
+    return columns, records, list(missing)
 
 
 if __name__ == '__main__':
     import pandas as pd
 
-    gz_paths_cols: List[Tuple[str, str]] = get_task2_dfs(sys.argv[1])
-
-    try:
-        # DEBUG: slice gz_paths and cols
-        gz_paths_cols = gz_paths_cols[int(sys.argv[2]):]
-    except IndexError:
-        pass
+    ds_path = get_ds_path_arg()
+    if ds_path is None:
+        print('No ds path')
+        exit()
+    gz_paths_cols: List[Tuple[str, str]] = get_task2_dfs(ds_path)
 
     columns, records, missing = t2_get_n_frequents(gz_paths_cols)
     # print(records)
 
     df_output = pd.DataFrame.from_records(records, columns=columns)
-    print(columns)
+    print('### FOUND ###')
     print(df_output)
     df_output.to_csv('task2_label.csv', index=False)
 
-    df_missing = pd.DataFrame.from_records(missing)
+    df_missing = pd.DataFrame.from_records([eval(m) for m in missing], columns=['ds_name', 'col_name_ta'])
+    print('### MISSING ###')
     print(df_missing)
     df_missing.to_csv('task2_label_missing.csv', index=False)
