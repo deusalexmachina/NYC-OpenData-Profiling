@@ -48,16 +48,16 @@ def timed(fn, files: List[str] = None) -> None:
 
     actual_len_dfs = len_dfs
 
-    for i, df in enumerate(dfs):
+    for i_ran, (i, df) in enumerate(dfs):  # i_ran is how many were actually loaded, i is how many were found in dir
         print(f"### i: {i}, ds: {df.ds_name} ###")
 
-        actual_len_dfs = i+1
+        actual_len_dfs = i_ran+1
 
         time_start = time.time()
         # output = fn(df)
         try:
-            output = fn(df)
-        except utils.AnalysisException as e:
+            output = fn(df, i)
+        except (utils.AnalysisException, ValueError) as e:
             print(e)
             continue
         time_end = time.time()
@@ -75,7 +75,7 @@ def timed(fn, files: List[str] = None) -> None:
             max_runtime = runtime
             max_output = output
 
-        if actual_len_dfs >= limit:
+        if i >= limit:
             break
 
     total_runtime_load = time_end - time_start_all

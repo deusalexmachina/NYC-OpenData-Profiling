@@ -41,23 +41,28 @@ def get_ds_file_names(ds_path: str) -> List[str]:
     return files
 
 
-def generate_dataframes(spark: SparkSession, files: Iterable[str]) -> Generator[DataFrame, None, None]:
+def generate_dataframes(spark: SparkSession, files: Iterable[str]) -> Generator[Union[int, DataFrame], None, None]:
     """
     takes a list of .gz dataset filenames on the hdfs and reads them into a Spark DataFrame (Spark does decompression).
     skips files that may be decompressed to larger than 2.5GB.
     because it returns a generator, the above process occurs lazily per dataset
     """
-    for path in files:
+    for i, path in enumerate(files):
+        # limit files to a certain filesize to prevent memory issues
         if int(run_hdfs_cmd(HDFS_SIZE_F.format(ds_path=path))) < 6e+8:  # 600MB
             # read compressed tsv file
             df = spark.read.csv(path, sep="\t", header=True, inferSchema=True)
             df.ds_name = basename(path)
-            yield df
+            yield i, df
         else:
             try:
                 raise MemoryError(f'{path}: large compressed file size that may decompress to +2.5GB')
             except MemoryError as e:
                 print(e)
+        # # do not limit filesize
+        # df = spark.read.csv(path, sep="\t", header=True, inferSchema=True)
+        # df.ds_name = basename(path)
+        # yield i, df
 
 
 def datasets_to_dataframes(spark: SparkSession, ds_path: str, rand: bool = False) -> Union[int, Generator[DataFrame, None, None]]:
@@ -95,11 +100,11 @@ def test():
     except IndexError:
         pass
     
-    def run(df):
+    def _run(df, i):
         if print_schema == 'print':
             df.printSchema()
 
-    timed(run)
+    timed(_run)
 
     
 if __name__ == '__main__':
