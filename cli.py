@@ -6,38 +6,62 @@ from typing import Union
 functions to grab arguments from the cli
 """
 
+
+### RULES ON GETTING ARGS ###
+
+
+def get_bool_arg(i: int) -> bool:
+    arg = sys.argv[i]
+    if arg == '-':
+        arg = False
+    else:
+        try:
+            arg = bool(arg)
+        except (IndexError, ValueError):
+            arg = False
+    return arg
+
+
+def get_int_arg(i: int) -> Union[int, None]:
+    try:
+        arg = int(sys.argv[i])
+    except (IndexError, ValueError):
+        arg = None
+
+    return arg
+
+
+def get_str_arg(i: int) -> Union[str, None]:
+    try:
+        s = str(sys.argv[i])
+    except (IndexError, ValueError):
+        s = None
+
+    if s is '-':
+        return None
+    else:
+        return s
+
+
+### TYPICAL ARGS ###
+
+
 def get_rand_arg(i=3) -> bool:
     """
     rand argument from cli to shuffle files before running (run in random order)
     """
-    try:
-        rand = bool(sys.argv[i])
-    except (IndexError, ValueError):
-        rand = False
-    return rand
+    return get_bool_arg(i)
+
 
 def get_limit_arg(i=2) -> Union[int, None]:
     """
     limit argument to limit the number of datasets run
     """
-    try:
-        limit = int(sys.argv[i])
-    except (IndexError, ValueError):
-        limit = None
-
-    return limit
+    return get_int_arg(i)
 
 
 def get_ds_path_arg(i=1) -> Union[str, None]:
     """
     limit argument to limit the number of datasets run
     """
-    try:
-        path = str(sys.argv[i])
-    except (IndexError, ValueError):
-        path = None
-
-    if path is not '-':
-        return path
-    else:
-        return None
+    return get_str_arg(i)
