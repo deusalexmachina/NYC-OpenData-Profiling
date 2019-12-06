@@ -188,7 +188,7 @@ def test():
     # master_dct contains all output to be used in json
     master_dct = {}
 
-    def run(df):
+    def _run(df, i):
         ### MAIN ###
         # dct belongs to a dataset
         dct = {
@@ -212,7 +212,7 @@ def test():
 
         return dct
 
-    timed(run)
+    timed(_run)
 
     # DEBUG print all output
     # print()
