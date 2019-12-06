@@ -8,15 +8,19 @@ import sys
 
 from typing import List
 
+import random
+
+from cli import get_rand_arg, get_limit_arg
+
 
 def timed(fn, files: List[str] = None) -> None:
     """
     a standardized interface for timing some function fn which accepts a df and potentially other args and kwargs. 
     it calculates runtimes and avg runtimes while iterating through the df generator and calling fn, and prints them.
 
-    when this is called by another module, use sys.argv[1] for the limit and sys.arv[2] for selecting random datasets. 
+    when this is called by another module, use sys.argv[1] for the limit and sys.arv[2] for selecting random datasets (or what is defaulted by the cli module). 
     to not set an option, pass in '-'.
-    example from cli: `./env.sh "basic_metadata.py - rand"`
+    example from cli: `./env.sh "basic_metadata.py - True"`
     """
     spark = SparkSession.builder.getOrCreate()  # init spark
 
@@ -29,20 +33,18 @@ def timed(fn, files: List[str] = None) -> None:
 
     len_dfs = 0
     dfs = None
-    if files is None:
-        rand = False
-        try:
-            try:
-                rand = bool(sys.argv[3])
-            except (IndexError, ValueError):
-                pass
-            limit = int(sys.argv[2])
-        except (IndexError, ValueError):
-            limit = len_dfs
 
+    rand = get_rand_arg()
+
+    if files is None:
         len_dfs, dfs = datasets_to_dataframes(spark, sys.argv[1], rand)
     else:
+        # no random order if files are passed (call random.shuffle before passing files)
         len_dfs, dfs = datasets_to_dataframes_select(spark, files)
+
+    limit = get_limit_arg()
+    if limit is None:
+        limit = len_dfs
 
     actual_len_dfs = len_dfs
 

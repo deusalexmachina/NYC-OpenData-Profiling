@@ -11,7 +11,8 @@ from typing import Union, List, Tuple, Dict, Any
 import sys
 import os.path
 
-import string
+from cli import get_rand_arg
+import random
 
 
 def get_counts(df_cols: Union[DataFrame, Column]) -> DataFrame:
@@ -104,6 +105,10 @@ def t2_get_n_frequents(gz_paths_cols: List[Tuple[str, str]],
 
     this function outputs good quality representative values for the column
     """
+    rand = get_rand_arg()
+    if rand:
+        random.shuffle(gz_paths_cols)
+
     # unzip basically
     gz_paths: List[str] = [gz_paths for gz_paths, _ in gz_paths_cols]
     cols: List[str] = [cols for _, cols in gz_paths_cols]
