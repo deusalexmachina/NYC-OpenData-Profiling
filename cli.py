@@ -11,7 +11,10 @@ functions to grab arguments from the cli
 
 
 def get_bool_arg(i: int) -> bool:
-    arg = sys.argv[i]
+    try:
+        arg = sys.argv[i]
+    except Exception:
+        arg = False
     if arg == '-':
         arg = False
     else:
