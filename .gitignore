@@ -6,3 +6,7 @@ __pycache__
 *.csv
 _*test.*
 big_data.zip
+*.zip
+*.json
+*record
+results/*
