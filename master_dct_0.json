@@ -1,0 +1,4184 @@
+{
+    "dataset_name": "2232-dj5q.tsv.gz",
+    "columns": {
+        "data period": {
+            "column_name": "data period",
+            "number_distinct_values": 11,
+            "frequent_values": [
+                "201908",
+                "201905",
+                "201907",
+                "201906",
+                "201903"
+            ],
+            "number_non_empty_cells": 185,
+            "number_empty_cells": 0
+        },
+        "total children": {
+            "column_name": "total children",
+            "number_distinct_values": 37,
+            "frequent_values": [
+                "8.0",
+                "5.0",
+                "10.0",
+                "0.95",
+                "3.0"
+            ],
+            "number_non_empty_cells": 54,
+            "number_empty_cells": 131
+        },
+        "single women": {
+            "column_name": "single women",
+            "number_distinct_values": 40,
+            "frequent_values": [
+                "27",
+                "61",
+                "38",
+                "60",
+                "102"
+            ],
+            "number_non_empty_cells": 44,
+            "number_empty_cells": 141
+        },
+        "single men": {
+            "column_name": "single men",
+            "number_distinct_values": 70,
+            "frequent_values": [
+                "0.92",
+                "0.91",
+                "0.89",
+                "0.93",
+                "0.86"
+            ],
+            "number_non_empty_cells": 89,
+            "number_empty_cells": 96
+        },
+        "families with children": {
+            "column_name": "families with children",
+            "number_distinct_values": 17,
+            "frequent_values": [
+                "7",
+                "5",
+                "13",
+                "8",
+                "3"
+            ],
+            "number_non_empty_cells": 33,
+            "number_empty_cells": 152
+        },
+        "total adults in families": {
+            "column_name": "total adults in families",
+            "number_distinct_values": 19,
+            "frequent_values": [
+                "7",
+                "4",
+                "8",
+                "3",
+                "2"
+            ],
+            "number_non_empty_cells": 34,
+            "number_empty_cells": 151
+        },
+        "total single adults": {
+            "column_name": "total single adults",
+            "number_distinct_values": 38,
+            "frequent_values": [
+                "117",
+                "77",
+                "42",
+                "135",
+                "113"
+            ],
+            "number_non_empty_cells": 44,
+            "number_empty_cells": 141
+        },
+        "category": {
+            "column_name": "category",
+            "number_distinct_values": 17,
+            "frequent_values": [
+                "number of unduplicated persons - DYCD-administered transitional independent living facilities",
+                "number of individuals who are on wait-list - DYCD-administered transitional independent living facilities",
+                "number of individuals who are on wait-list - DYCD-administered crisis shelters",
+                "average monthly utilization rates - DYCD-administered transitional independent living facilities",
+                "average monthly utilization rates - DYCD-administered crisis shelters"
+            ],
+            "number_non_empty_cells": 176,
+            "number_empty_cells": 9
+        },
+        "total families": {
+            "column_name": "total families",
+            "number_distinct_values": 17,
+            "frequent_values": [
+                "7",
+                "5",
+                "13",
+                "8",
+                "2"
+            ],
+            "number_non_empty_cells": 33,
+            "number_empty_cells": 152
+        }
+    },
+    "dataset_profile": {
+        "data period": {
+            "REAL": {
+                "count": 185,
+                "max_value": 201908.0,
+                "min_value": 201810.0,
+                "mean": 201880.34594594594,
+                "std": 41.096712531092216
+            }
+        },
+        "total children": {
+            "REAL": {
+                "count": 54,
+                "max_value": 149.0,
+                "min_value": 0.93,
+                "mean": 24.457037037037043,
+                "std": 28.707483192032882
+            }
+        },
+        "single women": {
+            "REAL": {
+                "count": 44,
+                "max_value": 345.0,
+                "min_value": 9.0,
+                "mean": 77.09090909090907,
+                "std": 61.409881564118066
+            }
+        },
+        "single men": {
+            "REAL": {
+                "count": 89,
+                "max_value": 382.0,
+                "min_value": 0.82,
+                "mean": 64.07,
+                "std": 73.43277261810303
+            }
+        },
+        "families with children": {
+            "REAL": {
+                "count": 33,
+                "max_value": 47.0,
+                "min_value": 1.0,
+                "mean": 9.515151515151516,
+                "std": 8.613313205206378
+            }
+        },
+        "total adults in families": {
+            "REAL": {
+                "count": 34,
+                "max_value": 47.0,
+                "min_value": 0.0,
+                "mean": 9.588235294117647,
+                "std": 8.997116031585518
+            }
+        },
+        "total single adults": {
+            "REAL": {
+                "count": 44,
+                "max_value": 727.0,
+                "min_value": 31.0,
+                "mean": 166.88636363636363,
+                "std": 130.33195657611634
+            }
+        },
+        "category": {
+            "TEXT": {
+                "count": 176,
+                "shortest_values": [
+                    "Average Length of Stay: DYCD -administered crisis facility",
+                    "Average Length of Stay: DYCD -administered crisis facility",
+                    "Average Length of Stay: DYCD -administered crisis facility",
+                    "Average Length of Stay: DYCD -administered crisis facility",
+                    "Average Length of Stay: DYCD -administered crisis facility"
+                ],
+                "longest_values": [
+                    "number of individuals who are on wait-list - DYCD-administered transitional independent living facilities",
+                    "number of individuals who are on wait-list - DYCD-administered transitional independent living facilities",
+                    "number of individuals who are on wait-list - DYCD-administered transitional independent living facilities",
+                    "number of individuals who are on wait-list - DYCD-administered transitional independent living facilities",
+                    "number of individuals who are on wait-list - DYCD-administered transitional independent living facilities"
+                ],
+                "average_length": 77.33522727272727
+            }
+        },
+        "total families": {
+            "REAL": {
+                "count": 33,
+                "max_value": 47.0,
+                "min_value": 1.0,
+                "mean": 9.515151515151516,
+                "std": 8.613313205206378
+            }
+        }
+    },
+    "itemset": {
+        "-REAL-": 8,
+        "-TEXT-": 1
+    }
+}
+{
+    "dataset_name": "22rr-ujq3.tsv.gz",
+    "columns": {
+        "NON-ELL REMOVALS": {
+            "column_name": "NON-ELL REMOVALS",
+            "number_distinct_values": 39,
+            "frequent_values": [
+                "R",
+                "7",
+                "38",
+                "18",
+                "19"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "NON-ELL PRINCIPAL": {
+            "column_name": "NON-ELL PRINCIPAL",
+            "number_distinct_values": 82,
+            "frequent_values": [
+                "R",
+                "6",
+                "43",
+                "28",
+                "36"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "NON-ELL EXPULSIONS": {
+            "column_name": "NON-ELL EXPULSIONS",
+            "number_distinct_values": 1,
+            "frequent_values": [
+                "R"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "ELL EXPULSIONS": {
+            "column_name": "ELL EXPULSIONS",
+            "number_distinct_values": 1,
+            "frequent_values": [
+                "R"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "LOCATION CATEGORY": {
+            "column_name": "LOCATION CATEGORY",
+            "number_distinct_values": 10,
+            "frequent_values": [
+                "Elementary",
+                "High school",
+                "Junior High-Intermediate-Middle",
+                "K-8",
+                "Secondary School"
+            ],
+            "number_non_empty_cells": 1664,
+            "number_empty_cells": 1
+        },
+        "NON-ELL SUPERINTENDENT": {
+            "column_name": "NON-ELL SUPERINTENDENT",
+            "number_distinct_values": 16,
+            "frequent_values": [
+                "R",
+                "11",
+                "9",
+                "8",
+                "41"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "LOCATION NAME": {
+            "column_name": "LOCATION NAME",
+            "number_distinct_values": 1661,
+            "frequent_values": [
+                "P.S. 360",
+                "P.S. 253",
+                "P.S. 212",
+                "P.S. 161 Pedro Albizu Campos",
+                "Urban Assembly School for Music and Art"
+            ],
+            "number_non_empty_cells": 1664,
+            "number_empty_cells": 1
+        },
+        "SY1617 TOTAL REMOVALS/SUSPENSIONS": {
+            "column_name": "SY1617 TOTAL REMOVALS/SUSPENSIONS",
+            "number_distinct_values": 159,
+            "frequent_values": [
+                "R",
+                "0",
+                "6",
+                "11",
+                "12"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "ELL PRINCIPAL": {
+            "column_name": "ELL PRINCIPAL",
+            "number_distinct_values": 31,
+            "frequent_values": [
+                "R",
+                "6",
+                "8",
+                "7",
+                "10"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "ELL REMOVALS": {
+            "column_name": "ELL REMOVALS",
+            "number_distinct_values": 17,
+            "frequent_values": [
+                "R",
+                "6",
+                "7",
+                "8",
+                "11"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "DBN": {
+            "column_name": "DBN",
+            "number_distinct_values": 1665,
+            "frequent_values": [
+                "06M311",
+                "09X297",
+                "19K007",
+                "24Q330",
+                "31R046"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "ELL SUPERINTENDENT": {
+            "column_name": "ELL SUPERINTENDENT",
+            "number_distinct_values": 7,
+            "frequent_values": [
+                "R",
+                "6",
+                "7",
+                "9",
+                "8"
+            ],
+            "number_non_empty_cells": 1665,
+            "number_empty_cells": 0
+        },
+        "ADMINISTRATIVE DISTRICT": {
+            "column_name": "ADMINISTRATIVE DISTRICT",
+            "number_distinct_values": 34,
+            "frequent_values": [
+                "2",
+                "10",
+                "31",
+                "9",
+                "11"
+            ],
+            "number_non_empty_cells": 1664,
+            "number_empty_cells": 1
+        }
+    },
+    "dataset_profile": {
+        "NON-ELL REMOVALS": {
+            "REAL": {
+                "count": 48,
+                "max_value": 10165.0,
+                "min_value": 6.0,
+                "mean": 257.5625,
+                "std": 1445.8082068842152
+            },
+            "TEXT": {
+                "count": 1617,
+                "shortest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "longest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "NON-ELL PRINCIPAL": {
+            "REAL": {
+                "count": 118,
+                "max_value": 22822.0,
+                "min_value": 6.0,
+                "mean": 256.64406779661016,
+                "std": 2086.777742810321
+            },
+            "TEXT": {
+                "count": 1547,
+                "shortest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "longest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "NON-ELL EXPULSIONS": {
+            "TEXT": {
+                "count": 1665,
+                "shortest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "longest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELL EXPULSIONS": {
+            "TEXT": {
+                "count": 1665,
+                "shortest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "longest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "LOCATION CATEGORY": {
+            "TEXT": {
+                "count": 1664,
+                "shortest_values": [
+                    "K-8",
+                    "K-8",
+                    "K-8",
+                    "K-8",
+                    "K-8"
+                ],
+                "longest_values": [
+                    "Junior High-Intermediate-Middle",
+                    "Junior High-Intermediate-Middle",
+                    "Junior High-Intermediate-Middle",
+                    "Junior High-Intermediate-Middle",
+                    "Junior High-Intermediate-Middle"
+                ],
+                "average_length": 13.541466346153847
+            }
+        },
+        "NON-ELL SUPERINTENDENT": {
+            "REAL": {
+                "count": 18,
+                "max_value": 8704.0,
+                "min_value": 8.0,
+                "mean": 502.3888888888889,
+                "std": 1989.2280506905993
+            },
+            "TEXT": {
+                "count": 1647,
+                "shortest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "longest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "LOCATION NAME": {
+            "TEXT": {
+                "count": 1664,
+                "shortest_values": [
+                    "LYFE",
+                    "Kappa",
+                    "P.S. 89",
+                    "Muscota",
+                    "P.S. 66"
+                ],
+                "longest_values": [
+                    "Green School: An Academy for Environmental Careers",
+                    "The High School for Enterprise, Business and Techn",
+                    "Williamsburg High School for Architecture and Desi",
+                    "Magnet School of Math, Science and Design Technolo",
+                    "Brooklyn Secondary School for Collaborative Studie"
+                ],
+                "average_length": 27.967548076923077
+            }
+        },
+        "SY1617 TOTAL REMOVALS/SUSPENSIONS": {
+            "REAL": {
+                "count": 1327,
+                "max_value": 46571.0,
+                "min_value": 0.0,
+                "mean": 69.50263752825923,
+                "std": 1277.7727672469728
+            },
+            "TEXT": {
+                "count": 338,
+                "shortest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "longest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELL PRINCIPAL": {
+            "REAL": {
+                "count": 118,
+                "max_value": 2874.0,
+                "min_value": 6.0,
+                "mean": 38.355932203389834,
+                "std": 262.3809342696203
+            },
+            "TEXT": {
+                "count": 1547,
+                "shortest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "longest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELL REMOVALS": {
+            "REAL": {
+                "count": 48,
+                "max_value": 1172.0,
+                "min_value": 6.0,
+                "mean": 35.645833333333336,
+                "std": 165.8976202340032
+            },
+            "TEXT": {
+                "count": 1617,
+                "shortest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "longest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "DBN": {
+            "TEXT": {
+                "count": 1665,
+                "shortest_values": [
+                    "16K262",
+                    "16K267",
+                    "16K308",
+                    "16K309",
+                    "16K335"
+                ],
+                "longest_values": [
+                    "16K040",
+                    "16K057",
+                    "16K081",
+                    "16K243",
+                    "CITYWIDE"
+                ],
+                "average_length": 6.0012012012012015
+            }
+        },
+        "ELL SUPERINTENDENT": {
+            "REAL": {
+                "count": 18,
+                "max_value": 834.0,
+                "min_value": 6.0,
+                "mean": 53.27777777777778,
+                "std": 189.35938950857897
+            },
+            "TEXT": {
+                "count": 1647,
+                "shortest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "longest_values": [
+                    "R",
+                    "R",
+                    "R",
+                    "R",
+                    "R"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ADMINISTRATIVE DISTRICT": {
+            "REAL": {
+                "count": 1664,
+                "max_value": 79.0,
+                "min_value": 1.0,
+                "mean": 18.318509615384627,
+                "std": 14.822977670141821
+            }
+        }
+    },
+    "itemset": {
+        "-REAL--TEXT-": 7,
+        "-TEXT-": 5,
+        "-REAL-": 1
+    }
+}
+{
+    "dataset_name": "24nr-gahi.tsv.gz",
+    "columns": {
+        "Total": {
+            "column_name": "Total",
+            "number_distinct_values": 36,
+            "frequent_values": [
+                "0.0",
+                "50.0",
+                "25.0",
+                "750.0",
+                "100.0"
+            ],
+            "number_non_empty_cells": 89,
+            "number_empty_cells": 0
+        },
+        "FY24": {
+            "column_name": "FY24",
+            "number_distinct_values": 35,
+            "frequent_values": [
+                "0.0",
+                "10.0",
+                "5.0",
+                "40.0",
+                "25.0"
+            ],
+            "number_non_empty_cells": 89,
+            "number_empty_cells": 0
+        },
+        "Category": {
+            "column_name": "Category",
+            "number_distinct_values": 6,
+            "frequent_values": [
+                "State of Good Repair",
+                "System Expansion",
+                "Emergency, Unspecified and Misc.",
+                "Educational Enhancements",
+                "Safety and Security"
+            ],
+            "number_non_empty_cells": 88,
+            "number_empty_cells": 1
+        },
+        "Work Type": {
+            "column_name": "Work Type",
+            "number_distinct_values": 83,
+            "frequent_values": [
+                "4.Swimming Pools",
+                "1.Athletic Fields",
+                "1.Lunchrooms",
+                "3.Gymnasiums",
+                "2.Auditoriums"
+            ],
+            "number_non_empty_cells": 88,
+            "number_empty_cells": 1
+        },
+        "FY21": {
+            "column_name": "FY21",
+            "number_distinct_values": 43,
+            "frequent_values": [
+                "0.0",
+                "10.0",
+                "5.46",
+                "40.0",
+                "62.49"
+            ],
+            "number_non_empty_cells": 89,
+            "number_empty_cells": 0
+        },
+        "FY22": {
+            "column_name": "FY22",
+            "number_distinct_values": 39,
+            "frequent_values": [
+                "0.0",
+                "10.0",
+                "40.0",
+                "5.46",
+                "25.0"
+            ],
+            "number_non_empty_cells": 89,
+            "number_empty_cells": 0
+        },
+        "FY23": {
+            "column_name": "FY23",
+            "number_distinct_values": 37,
+            "frequent_values": [
+                "0.0",
+                "10.0",
+                "40.0",
+                "25.0",
+                "5.46"
+            ],
+            "number_non_empty_cells": 89,
+            "number_empty_cells": 0
+        },
+        "FY20": {
+            "column_name": "FY20",
+            "number_distinct_values": 43,
+            "frequent_values": [
+                "0.0",
+                "10.0",
+                "5.46",
+                "40.0",
+                "49.95"
+            ],
+            "number_non_empty_cells": 89,
+            "number_empty_cells": 0
+        },
+        "Subcategory": {
+            "column_name": "Subcategory",
+            "number_distinct_values": 21,
+            "frequent_values": [
+                "System Replacements",
+                "Building Upgrade",
+                "New Construction-Additional Capacity",
+                "Educational Enhancements",
+                "Safety and Security"
+            ],
+            "number_non_empty_cells": 88,
+            "number_empty_cells": 1
+        }
+    },
+    "dataset_profile": {
+        "Total": {
+            "REAL": {
+                "count": 89,
+                "max_value": 17011.19,
+                "min_value": 0.0,
+                "mean": 382.27404494382023,
+                "std": 1908.2555496665211
+            }
+        },
+        "FY24": {
+            "REAL": {
+                "count": 89,
+                "max_value": 3239.78,
+                "min_value": 0.0,
+                "mean": 72.80404494382023,
+                "std": 378.79417418582557
+            }
+        },
+        "Category": {
+            "TEXT": {
+                "count": 88,
+                "shortest_values": [
+                    "System Expansion",
+                    "System Expansion",
+                    "System Expansion",
+                    "System Expansion",
+                    "System Expansion"
+                ],
+                "longest_values": [
+                    "Emergency, Unspecified and Misc.",
+                    "Emergency, Unspecified and Misc.",
+                    "Emergency, Unspecified and Misc.",
+                    "Emergency, Unspecified and Misc.",
+                    "Emergency, Unspecified and Misc."
+                ],
+                "average_length": 20.545454545454547
+            }
+        },
+        "Work Type": {
+            "TEXT": {
+                "count": 88,
+                "shortest_values": [
+                    "1.Roofs",
+                    "4.Windows",
+                    "11.Floors",
+                    "1.Asbestos",
+                    "2.Parapets"
+                ],
+                "longest_values": [
+                    "2a. Building Additions/Modernizations",
+                    "4.School Improvement and Restructuring",
+                    "4.Replacements - Capacity - Interior Mod",
+                    "21.Cafeteria / Multipurpose Room Upgrade",
+                    "2.Emergency Lighting and Fire Safety Retrofits"
+                ],
+                "average_length": 21.068181818181817
+            }
+        },
+        "FY21": {
+            "REAL": {
+                "count": 89,
+                "max_value": 3423.9,
+                "min_value": 0.0,
+                "mean": 76.9414606741573,
+                "std": 384.7117727249159
+            }
+        },
+        "FY22": {
+            "REAL": {
+                "count": 89,
+                "max_value": 3426.32,
+                "min_value": 0.0,
+                "mean": 76.99595505617977,
+                "std": 396.7708702686612
+            }
+        },
+        "FY23": {
+            "REAL": {
+                "count": 89,
+                "max_value": 3414.38,
+                "min_value": 0.0,
+                "mean": 76.72752808988764,
+                "std": 386.4981929148879
+            }
+        },
+        "FY20": {
+            "REAL": {
+                "count": 89,
+                "max_value": 3506.81,
+                "min_value": 0.0,
+                "mean": 78.80460674157302,
+                "std": 377.00815581156974
+            }
+        },
+        "Subcategory": {
+            "TEXT": {
+                "count": 88,
+                "shortest_values": [
+                    "Replacements",
+                    "Replacements",
+                    "Replacements",
+                    "Replacements",
+                    "Resolution A"
+                ],
+                "longest_values": [
+                    "New Construction-Common-Facilities-Additions",
+                    "New Construction-Common-Facilities-Additions",
+                    "Rehabilitation of Physical Education Facilities",
+                    "Rehabilitation of Physical Education Facilities",
+                    "Rehabilitation of Physical Education Facilities"
+                ],
+                "average_length": 24.193181818181817
+            }
+        }
+    },
+    "itemset": {
+        "-REAL-": 6,
+        "-TEXT-": 3
+    }
+}
+{
+    "dataset_name": "25aa-q86c.tsv.gz",
+    "columns": {
+        "#Grade 6": {
+            "column_name": "#Grade 6",
+            "number_distinct_values": 244,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "8",
+                "9",
+                "10"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL Haitian Creole": {
+            "column_name": "#ELL Haitian Creole",
+            "number_distinct_values": 25,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "6",
+                "7",
+                "9"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA %Level 4": {
+            "column_name": "ELA %Level 4",
+            "number_distinct_values": 1326,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.07692307692307693",
+                "0.1111111111111111",
+                "0.12"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA #Level 1": {
+            "column_name": "ELA #Level 1",
+            "number_distinct_values": 270,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "7",
+                "8"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Grade K": {
+            "column_name": "#Grade K",
+            "number_distinct_values": 210,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "7",
+                "6",
+                "10"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Black": {
+            "column_name": "#Black",
+            "number_distinct_values": 409,
+            "frequent_values": [
+                "s",
+                "6",
+                "7",
+                "8",
+                "12"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL French": {
+            "column_name": "#ELL French",
+            "number_distinct_values": 11,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "6",
+                "8",
+                "10"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL Korean": {
+            "column_name": "#ELL Korean",
+            "number_distinct_values": 13,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "6",
+                "10",
+                "7"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL Spanish ": {
+            "column_name": "#ELL Spanish ",
+            "number_distinct_values": 214,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "7",
+                "10",
+                "6"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "Year": {
+            "column_name": "Year",
+            "number_distinct_values": 1,
+            "frequent_values": [
+                "2015-16"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA %Level 2": {
+            "column_name": "ELA %Level 2",
+            "number_distinct_values": 2242,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.3333333333333333",
+                "0.5",
+                "0.4"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL Arabic": {
+            "column_name": "%ELL Arabic",
+            "number_distinct_values": 248,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "0.2222222222222222",
+                "0.2",
+                "0.42857142857142855"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#White": {
+            "column_name": "#White",
+            "number_distinct_values": 356,
+            "frequent_values": [
+                "s",
+                "6",
+                "8",
+                "7",
+                "9"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Grade 8": {
+            "column_name": "#Grade 8",
+            "number_distinct_values": 248,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "12",
+                "10",
+                "8"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%Asian": {
+            "column_name": "%Asian",
+            "number_distinct_values": 1875,
+            "frequent_values": [
+                "s",
+                "0.5",
+                "0.3333333333333333",
+                "0.16666666666666666",
+                "0.25"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH #Level 2": {
+            "column_name": "MATH #Level 2",
+            "number_distinct_values": 291,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "7",
+                "8"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Asian": {
+            "column_name": "#Asian",
+            "number_distinct_values": 379,
+            "frequent_values": [
+                "s",
+                "6",
+                "8",
+                "7",
+                "9"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA %Level 3": {
+            "column_name": "ELA %Level 3",
+            "number_distinct_values": 1389,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.5",
+                "0.3333333333333333",
+                "0.25"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL Haitian Creole": {
+            "column_name": "%ELL Haitian Creole",
+            "number_distinct_values": 53,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "0.375",
+                "0.42857142857142855",
+                "0.16666666666666666"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH %L3 + L4": {
+            "column_name": "MATH %L3 + L4",
+            "number_distinct_values": 2285,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.5",
+                "0.4",
+                "0.2"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "Total Enrollment": {
+            "column_name": "Total Enrollment",
+            "number_distinct_values": 940,
+            "frequent_values": [
+                "s",
+                "17",
+                "19",
+                "25",
+                "27"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%White ": {
+            "column_name": "%White ",
+            "number_distinct_values": 1874,
+            "frequent_values": [
+                "s",
+                "0.3333333333333333",
+                "0.5",
+                "0.2",
+                "0.16666666666666666"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA #L3+L4": {
+            "column_name": "ELA #L3+L4",
+            "number_distinct_values": 376,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "7",
+                "8"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH #Level 3": {
+            "column_name": "MATH #Level 3",
+            "number_distinct_values": 225,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "10",
+                "7"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "Category": {
+            "column_name": "Category",
+            "number_distinct_values": 6,
+            "frequent_values": [
+                "All Students",
+                "Poverty",
+                "Students with Disabilities",
+                "Reside in temporary housing",
+                "English Language Learners"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA %Level 1": {
+            "column_name": "ELA %Level 1",
+            "number_distinct_values": 2622,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.5",
+                "0.6666666666666666",
+                "0.3333333333333333"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Grade 7": {
+            "column_name": "#Grade 7",
+            "number_distinct_values": 247,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "12",
+                "15",
+                "14"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%Other": {
+            "column_name": "%Other",
+            "number_distinct_values": 759,
+            "frequent_values": [
+                "s",
+                "0.014084507042253521",
+                "0.07142857142857142",
+                "0.012345679012345678",
+                "0.012441679626749611"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL French": {
+            "column_name": "%ELL French",
+            "number_distinct_values": 20,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "0.4230769230769231",
+                "0.03409090909090909",
+                "0.1282051282051282"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%Male": {
+            "column_name": "%Male",
+            "number_distinct_values": 2790,
+            "frequent_values": [
+                "s",
+                "0.5",
+                "0.6666666666666666",
+                "0.5714285714285714",
+                "0.6"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%Female": {
+            "column_name": "%Female",
+            "number_distinct_values": 2790,
+            "frequent_values": [
+                "s",
+                "0.5",
+                "0.3333333333333333",
+                "0.42857142857142855",
+                "0.4"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH #L3+L4": {
+            "column_name": "MATH #L3+L4",
+            "number_distinct_values": 374,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "7",
+                "8"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL Other": {
+            "column_name": "%ELL Other",
+            "number_distinct_values": 326,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "0.1111111111111111",
+                "0.20833333333333334",
+                "0.125"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Hispanic": {
+            "column_name": "#Hispanic",
+            "number_distinct_values": 576,
+            "frequent_values": [
+                "s",
+                "6",
+                "7",
+                "10",
+                "11"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA #Level 2": {
+            "column_name": "ELA #Level 2",
+            "number_distinct_values": 318,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "9",
+                "8"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL Urdu": {
+            "column_name": "%ELL Urdu",
+            "number_distinct_values": 100,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "0.20689655172413793",
+                "0.03977272727272727",
+                "0.059602649006622516"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Grade 5": {
+            "column_name": "#Grade 5",
+            "number_distinct_values": 213,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "6",
+                "8",
+                "10"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH #Level 1": {
+            "column_name": "MATH #Level 1",
+            "number_distinct_values": 299,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "7",
+                "9",
+                "11"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL Bengali": {
+            "column_name": "%ELL Bengali",
+            "number_distinct_values": 121,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "0.14583333333333334",
+                "0.30434782608695654",
+                "0.13636363636363635"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH %Level 2": {
+            "column_name": "MATH %Level 2",
+            "number_distinct_values": 2213,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.3333333333333333",
+                "0.25",
+                "0.4"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL Other": {
+            "column_name": "#ELL Other",
+            "number_distinct_values": 60,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "6",
+                "7",
+                "10"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA #Test Takers": {
+            "column_name": "ELA #Test Takers",
+            "number_distinct_values": 643,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "9",
+                "6",
+                "10"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL Arabic": {
+            "column_name": "#ELL Arabic",
+            "number_distinct_values": 41,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "6",
+                "7",
+                "10"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL Bengali": {
+            "column_name": "#ELL Bengali",
+            "number_distinct_values": 53,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "6",
+                "8",
+                "9"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%Black": {
+            "column_name": "%Black",
+            "number_distinct_values": 2780,
+            "frequent_values": [
+                "s",
+                "0.3333333333333333",
+                "0.5",
+                "0.25",
+                "0.6666666666666666"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH %Level 3": {
+            "column_name": "MATH %Level 3",
+            "number_distinct_values": 1557,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.3333333333333333",
+                "0.25",
+                "0.16666666666666666"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA #Level 3": {
+            "column_name": "ELA #Level 3",
+            "number_distinct_values": 269,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "7",
+                "45"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA %L3+L4": {
+            "column_name": "ELA %L3+L4",
+            "number_distinct_values": 2186,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.3333333333333333",
+                "0.25",
+                "0.5"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Male": {
+            "column_name": "#Male",
+            "number_distinct_values": 595,
+            "frequent_values": [
+                "s",
+                "13",
+                "12",
+                "19",
+                "14"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH #Level 4": {
+            "column_name": "MATH #Level 4",
+            "number_distinct_values": 256,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "7",
+                "8"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "Math #Test Takers": {
+            "column_name": "Math #Test Takers",
+            "number_distinct_values": 641,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "17",
+                "9"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL Korean": {
+            "column_name": "%ELL Korean",
+            "number_distinct_values": 23,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "0.1708542713567839",
+                "0.046753246753246755",
+                "0.2222222222222222"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Grade 3": {
+            "column_name": "#Grade 3",
+            "number_distinct_values": 224,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "7",
+                "6",
+                "11"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Grade 1": {
+            "column_name": "#Grade 1",
+            "number_distinct_values": 219,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "7",
+                "8",
+                "6"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL Chinese": {
+            "column_name": "%ELL Chinese",
+            "number_distinct_values": 193,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "0.5",
+                "0.15384615384615385",
+                "0.4"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH %Level 1": {
+            "column_name": "MATH %Level 1",
+            "number_distinct_values": 2664,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.5",
+                "0.6666666666666666",
+                "0.6"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "DBN": {
+            "column_name": "DBN",
+            "number_distinct_values": 1165,
+            "frequent_values": [
+                "06M311",
+                "19K007",
+                "24Q330",
+                "28Q680",
+                "01M364"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL Russian": {
+            "column_name": "%ELL Russian",
+            "number_distinct_values": 82,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "0.25",
+                "0.5",
+                "0.1935483870967742"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Grade 2": {
+            "column_name": "#Grade 2",
+            "number_distinct_values": 225,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "8",
+                "7",
+                "6"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "School Name": {
+            "column_name": "School Name",
+            "number_distinct_values": 1162,
+            "frequent_values": [
+                "P.S. 212",
+                "P.S. 253",
+                "P.S. 360",
+                "Teachers College Community School",
+                "P.S. 076 A. Philip Randolph"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%Hispanic": {
+            "column_name": "%Hispanic",
+            "number_distinct_values": 3543,
+            "frequent_values": [
+                "s",
+                "1",
+                "0.5",
+                "0.6666666666666666",
+                "0.25"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL Chinese": {
+            "column_name": "#ELL Chinese",
+            "number_distinct_values": 98,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "6",
+                "7",
+                "10"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Grade 4": {
+            "column_name": "#Grade 4",
+            "number_distinct_values": 214,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "11",
+                "6",
+                "9"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "%ELL Spanish": {
+            "column_name": "%ELL Spanish",
+            "number_distinct_values": 642,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "1",
+                "0.8333333333333334",
+                "0.8571428571428571"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL Urdu": {
+            "column_name": "#ELL Urdu",
+            "number_distinct_values": 26,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "6",
+                "7",
+                "9"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "MATH %Level 4": {
+            "column_name": "MATH %Level 4",
+            "number_distinct_values": 1580,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "0.3333333333333333",
+                "0.16666666666666666",
+                "0.2"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "ELA #Level 4": {
+            "column_name": "ELA #Level 4",
+            "number_distinct_values": 202,
+            "frequent_values": [
+                "s",
+                "No Data",
+                "6",
+                "8",
+                "7"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#ELL Russian": {
+            "column_name": "#ELL Russian",
+            "number_distinct_values": 42,
+            "frequent_values": [
+                "No Data",
+                "s",
+                "8",
+                "28",
+                "9"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Female": {
+            "column_name": "#Female",
+            "number_distinct_values": 569,
+            "frequent_values": [
+                "s",
+                "15",
+                "16",
+                "14",
+                "11"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        },
+        "#Other": {
+            "column_name": "#Other",
+            "number_distinct_values": 76,
+            "frequent_values": [
+                "s",
+                "6",
+                "7",
+                "8",
+                "9"
+            ],
+            "number_non_empty_cells": 6924,
+            "number_empty_cells": 0
+        }
+    },
+    "dataset_profile": {
+        "#Grade 6": {
+            "REAL": {
+                "count": 2462,
+                "max_value": 686.0,
+                "min_value": 6.0,
+                "mean": 66.69171405361496,
+                "std": 94.62652872987877
+            },
+            "TEXT": {
+                "count": 505,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL Haitian Creole": {
+            "REAL": {
+                "count": 53,
+                "max_value": 46.0,
+                "min_value": 6.0,
+                "mean": 16.471698113207548,
+                "std": 11.049807944348062
+            },
+            "TEXT": {
+                "count": 1090,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA %Level 4": {
+            "REAL": {
+                "count": 1937,
+                "max_value": 1.0,
+                "min_value": 0.011194029850746268,
+                "mean": 0.1373793269507153,
+                "std": 0.12543257298172034
+            },
+            "TEXT": {
+                "count": 4726,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA #Level 1": {
+            "REAL": {
+                "count": 5418,
+                "max_value": 649.0,
+                "min_value": 6.0,
+                "mean": 55.81579918789221,
+                "std": 59.86832507190879
+            },
+            "TEXT": {
+                "count": 1245,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Grade K": {
+            "REAL": {
+                "count": 3460,
+                "max_value": 337.0,
+                "min_value": 6.0,
+                "mean": 47.688150289017315,
+                "std": 47.30579561629532
+            },
+            "TEXT": {
+                "count": 1083,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Black": {
+            "REAL": {
+                "count": 4468,
+                "max_value": 1152.0,
+                "min_value": 6.0,
+                "mean": 77.1374216651745,
+                "std": 106.418223637166
+            },
+            "TEXT": {
+                "count": 2456,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL French": {
+            "REAL": {
+                "count": 18,
+                "max_value": 36.0,
+                "min_value": 6.0,
+                "mean": 11.055555555555555,
+                "std": 8.222409907767796
+            },
+            "TEXT": {
+                "count": 1125,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL Korean": {
+            "REAL": {
+                "count": 21,
+                "max_value": 35.0,
+                "min_value": 6.0,
+                "mean": 13.523809523809524,
+                "std": 9.614567556424582
+            },
+            "TEXT": {
+                "count": 1122,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL Spanish ": {
+            "REAL": {
+                "count": 916,
+                "max_value": 1095.0,
+                "min_value": 6.0,
+                "mean": 66.23144104803498,
+                "std": 87.70904495002581
+            },
+            "TEXT": {
+                "count": 227,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "Year": {},
+        "ELA %Level 2": {
+            "REAL": {
+                "count": 5185,
+                "max_value": 0.875,
+                "min_value": 0.031413612565445025,
+                "mean": 0.3563137980903381,
+                "std": 0.09950017164586758
+            },
+            "TEXT": {
+                "count": 1478,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%ELL Arabic": {
+            "REAL": {
+                "count": 270,
+                "max_value": 0.8571428571428571,
+                "min_value": 0.01279317697228145,
+                "mean": 0.16618647705966189,
+                "std": 0.14358818605736176
+            },
+            "TEXT": {
+                "count": 873,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Grade 8": {
+            "REAL": {
+                "count": 2360,
+                "max_value": 784.0,
+                "min_value": 6.0,
+                "mean": 71.18940677966107,
+                "std": 100.44118427195677
+            },
+            "TEXT": {
+                "count": 476,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#White": {
+            "REAL": {
+                "count": 2570,
+                "max_value": 1099.0,
+                "min_value": 6.0,
+                "mean": 76.76342412451368,
+                "std": 133.09517697130292
+            },
+            "TEXT": {
+                "count": 4354,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%Asian": {
+            "REAL": {
+                "count": 2523,
+                "max_value": 1.0,
+                "min_value": 0.008112094395280236,
+                "mean": 0.25767436010112255,
+                "std": 0.22875059016417632
+            },
+            "TEXT": {
+                "count": 4401,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "MATH #Level 2": {
+            "REAL": {
+                "count": 5128,
+                "max_value": 818.0,
+                "min_value": 6.0,
+                "mean": 55.76560062402495,
+                "std": 74.22591197533781
+            },
+            "TEXT": {
+                "count": 1537,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Asian": {
+            "REAL": {
+                "count": 2523,
+                "max_value": 1545.0,
+                "min_value": 6.0,
+                "mean": 96.55251684502583,
+                "std": 165.2469102171448
+            },
+            "TEXT": {
+                "count": 4401,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA %Level 3": {
+            "REAL": {
+                "count": 2122,
+                "max_value": 1.0,
+                "min_value": 0.07575757575757576,
+                "mean": 0.28626176605927806,
+                "std": 0.10363345752321078
+            },
+            "TEXT": {
+                "count": 4541,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%ELL Haitian Creole": {
+            "REAL": {
+                "count": 53,
+                "max_value": 0.875,
+                "min_value": 0.026415094339622643,
+                "mean": 0.35358871602219316,
+                "std": 0.20212968170878595
+            },
+            "TEXT": {
+                "count": 1090,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "MATH %L3 + L4": {
+            "REAL": {
+                "count": 3930,
+                "max_value": 1.0,
+                "min_value": 0.018575851393188854,
+                "mean": 0.320898842246657,
+                "std": 0.2110660175315181
+            },
+            "TEXT": {
+                "count": 2735,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "Total Enrollment": {
+            "REAL": {
+                "count": 6701,
+                "max_value": 2158.0,
+                "min_value": 6.0,
+                "mean": 229.13953141322185,
+                "std": 301.08573230394813
+            },
+            "TEXT": {
+                "count": 223,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%White ": {
+            "REAL": {
+                "count": 2570,
+                "max_value": 1.0,
+                "min_value": 0.005970149253731343,
+                "mean": 0.23910104278482416,
+                "std": 0.2201411105265785
+            },
+            "TEXT": {
+                "count": 4354,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA #L3+L4": {
+            "REAL": {
+                "count": 3825,
+                "max_value": 1252.0,
+                "min_value": 6.0,
+                "mean": 79.16130718954244,
+                "std": 125.8636646716032
+            },
+            "TEXT": {
+                "count": 2838,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "Category": {
+            "TEXT": {
+                "count": 6924,
+                "shortest_values": [
+                    "Poverty",
+                    "Poverty",
+                    "Poverty",
+                    "Poverty",
+                    "Poverty"
+                ],
+                "longest_values": [
+                    "Attend school outside district of residence",
+                    "Attend school outside district of residence",
+                    "Attend school outside district of residence",
+                    "Attend school outside district of residence",
+                    "Attend school outside district of residence"
+                ],
+                "average_length": 23.24263431542461
+            }
+        },
+        "MATH #Level 3": {
+            "REAL": {
+                "count": 2345,
+                "max_value": 476.0,
+                "min_value": 6.0,
+                "mean": 60.455863539445716,
+                "std": 63.835655468677594
+            },
+            "TEXT": {
+                "count": 4320,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA %Level 1": {
+            "REAL": {
+                "count": 5418,
+                "max_value": 1.0,
+                "min_value": 0.009523809523809525,
+                "mean": 0.4546831041445683,
+                "std": 0.21465787421454605
+            },
+            "TEXT": {
+                "count": 1245,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Grade 7": {
+            "REAL": {
+                "count": 2376,
+                "max_value": 733.0,
+                "min_value": 6.0,
+                "mean": 69.47727272727273,
+                "std": 99.45335178082624
+            },
+            "TEXT": {
+                "count": 513,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%Other": {
+            "REAL": {
+                "count": 1014,
+                "max_value": 0.3181818181818182,
+                "min_value": 0.003694581280788177,
+                "mean": 0.03701653300338482,
+                "std": 0.03559373401997469
+            },
+            "TEXT": {
+                "count": 5910,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%ELL French": {
+            "REAL": {
+                "count": 18,
+                "max_value": 0.6792452830188679,
+                "min_value": 0.018306636155606407,
+                "mean": 0.19889347626180096,
+                "std": 0.20865657491379133
+            },
+            "TEXT": {
+                "count": 1125,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%Female": {
+            "REAL": {
+                "count": 6195,
+                "max_value": 0.7857142857142857,
+                "min_value": 0.16091954022988506,
+                "mean": 0.4574484162149268,
+                "std": 0.08423534928067919
+            },
+            "TEXT": {
+                "count": 729,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%Male": {
+            "REAL": {
+                "count": 6195,
+                "max_value": 0.8390804597701149,
+                "min_value": 0.21428571428571427,
+                "mean": 0.5425515837850741,
+                "std": 0.08423534928067918
+            },
+            "TEXT": {
+                "count": 729,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%ELL Other": {
+            "REAL": {
+                "count": 368,
+                "max_value": 0.9166666666666666,
+                "min_value": 0.008021390374331552,
+                "mean": 0.19692703521396468,
+                "std": 0.16703889856258633
+            },
+            "TEXT": {
+                "count": 775,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "MATH #L3+L4": {
+            "REAL": {
+                "count": 3930,
+                "max_value": 1313.0,
+                "min_value": 6.0,
+                "mean": 74.15190839694655,
+                "std": 123.77904502561077
+            },
+            "TEXT": {
+                "count": 2735,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Hispanic": {
+            "REAL": {
+                "count": 5996,
+                "max_value": 1928.0,
+                "min_value": 6.0,
+                "mean": 116.22831887925295,
+                "std": 172.2905930036056
+            },
+            "TEXT": {
+                "count": 928,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA #Level 2": {
+            "REAL": {
+                "count": 5185,
+                "max_value": 928.0,
+                "min_value": 6.0,
+                "mean": 62.42892960462867,
+                "std": 85.21015379999592
+            },
+            "TEXT": {
+                "count": 1478,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    " "
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%ELL Urdu": {
+            "REAL": {
+                "count": 105,
+                "max_value": 0.3333333333333333,
+                "min_value": 0.013651877133105802,
+                "mean": 0.09521029853305366,
+                "std": 0.07411499988391873
+            },
+            "TEXT": {
+                "count": 1038,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Grade 5": {
+            "REAL": {
+                "count": 3401,
+                "max_value": 346.0,
+                "min_value": 6.0,
+                "mean": 47.47162599235521,
+                "std": 48.49283135988781
+            },
+            "TEXT": {
+                "count": 894,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%ELL Bengali": {
+            "REAL": {
+                "count": 122,
+                "max_value": 0.7,
+                "min_value": 0.0078125,
+                "mean": 0.17219483257624388,
+                "std": 0.13693459464152133
+            },
+            "TEXT": {
+                "count": 1021,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "MATH #Level 1": {
+            "REAL": {
+                "count": 5490,
+                "max_value": 762.0,
+                "min_value": 6.0,
+                "mean": 62.39526411657569,
+                "std": 71.08509777099833
+            },
+            "TEXT": {
+                "count": 1175,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "MATH %Level 2": {
+            "REAL": {
+                "count": 5128,
+                "max_value": 0.8,
+                "min_value": 0.018947368421052633,
+                "mean": 0.31797587462343874,
+                "std": 0.09606643702946815
+            },
+            "TEXT": {
+                "count": 1537,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL Other": {
+            "REAL": {
+                "count": 368,
+                "max_value": 151.0,
+                "min_value": 6.0,
+                "mean": 18.086956521739125,
+                "std": 17.469944484813265
+            },
+            "TEXT": {
+                "count": 775,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA #Test Takers": {
+            "REAL": {
+                "count": 6250,
+                "max_value": 2064.0,
+                "min_value": 6.0,
+                "mean": 150.61423999999982,
+                "std": 218.01599315009526
+            },
+            "TEXT": {
+                "count": 413,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL Arabic": {
+            "REAL": {
+                "count": 270,
+                "max_value": 93.0,
+                "min_value": 6.0,
+                "mean": 13.974074074074078,
+                "std": 11.963032335540168
+            },
+            "TEXT": {
+                "count": 873,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL Bengali": {
+            "REAL": {
+                "count": 122,
+                "max_value": 142.0,
+                "min_value": 6.0,
+                "mean": 27.352459016393443,
+                "std": 28.28714651370238
+            },
+            "TEXT": {
+                "count": 1021,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%Black": {
+            "REAL": {
+                "count": 4468,
+                "max_value": 1.0,
+                "min_value": 0.004070556309362279,
+                "mean": 0.389568379620241,
+                "std": 0.2722946663776032
+            },
+            "TEXT": {
+                "count": 2456,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "MATH %Level 3": {
+            "REAL": {
+                "count": 2345,
+                "max_value": 0.75,
+                "min_value": 0.03529411764705882,
+                "mean": 0.21653312616739168,
+                "std": 0.08616849746025433
+            },
+            "TEXT": {
+                "count": 4320,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA #Level 3": {
+            "REAL": {
+                "count": 2122,
+                "max_value": 625.0,
+                "min_value": 6.0,
+                "mean": 85.87323279924601,
+                "std": 85.39269189038393
+            },
+            "TEXT": {
+                "count": 4541,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA %L3+L4": {
+            "REAL": {
+                "count": 3825,
+                "max_value": 1.0,
+                "min_value": 0.019444444444444445,
+                "mean": 0.3277499701789058,
+                "std": 0.19417036921198425
+            },
+            "TEXT": {
+                "count": 2838,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Male": {
+            "REAL": {
+                "count": 6195,
+                "max_value": 1125.0,
+                "min_value": 6.0,
+                "mean": 129.27909604519786,
+                "std": 156.55347091752955
+            },
+            "TEXT": {
+                "count": 729,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "MATH #Level 4": {
+            "REAL": {
+                "count": 2351,
+                "max_value": 919.0,
+                "min_value": 6.0,
+                "mean": 55.54402381965128,
+                "std": 89.56942513958717
+            },
+            "TEXT": {
+                "count": 4314,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "Math #Test Takers": {
+            "REAL": {
+                "count": 6263,
+                "max_value": 1951.0,
+                "min_value": 6.0,
+                "mean": 148.58550215551656,
+                "std": 210.86945228810666
+            },
+            "TEXT": {
+                "count": 402,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%ELL Korean": {
+            "REAL": {
+                "count": 21,
+                "max_value": 0.5074626865671642,
+                "min_value": 0.046753246753246755,
+                "mean": 0.18135775452840625,
+                "std": 0.11513186199806137
+            },
+            "TEXT": {
+                "count": 1122,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Grade 3": {
+            "REAL": {
+                "count": 3528,
+                "max_value": 369.0,
+                "min_value": 6.0,
+                "mean": 48.79931972789119,
+                "std": 51.320885711324436
+            },
+            "TEXT": {
+                "count": 850,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Grade 1": {
+            "REAL": {
+                "count": 3551,
+                "max_value": 383.0,
+                "min_value": 6.0,
+                "mean": 49.346099690228115,
+                "std": 49.828327203633236
+            },
+            "TEXT": {
+                "count": 985,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%ELL Chinese": {
+            "REAL": {
+                "count": 198,
+                "max_value": 0.991701244813278,
+                "min_value": 0.015424164524421594,
+                "mean": 0.3643453218834081,
+                "std": 0.2747579363894871
+            },
+            "TEXT": {
+                "count": 945,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "MATH %Level 1": {
+            "REAL": {
+                "count": 5490,
+                "max_value": 1.0,
+                "min_value": 0.015789473684210527,
+                "mean": 0.4914988806741678,
+                "std": 0.21702118495290182
+            },
+            "TEXT": {
+                "count": 1175,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "DBN": {
+            "TEXT": {
+                "count": 6924,
+                "shortest_values": [
+                    "14K126",
+                    "14K126",
+                    "14K126",
+                    "14K126",
+                    "14K132"
+                ],
+                "longest_values": [
+                    "14K120",
+                    "14K196",
+                    "14K147",
+                    "14K126",
+                    "14K126"
+                ],
+                "average_length": 6.0
+            }
+        },
+        "%ELL Russian": {
+            "REAL": {
+                "count": 83,
+                "max_value": 0.939,
+                "min_value": 0.016574585635359115,
+                "mean": 0.24034686801327118,
+                "std": 0.1826940475893146
+            },
+            "TEXT": {
+                "count": 1060,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "School Name": {
+            "TEXT": {
+                "count": 6924,
+                "shortest_values": [
+                    "#N/A",
+                    "#N/A",
+                    "#N/A",
+                    "#N/A",
+                    "#N/A"
+                ],
+                "longest_values": [
+                    "Urban Assembly Institute of Math and Science for Y",
+                    "Urban Assembly Institute of Math and Science for Y",
+                    "Urban Assembly Institute of Math and Science for Y",
+                    "Urban Assembly Institute of Math and Science for Y",
+                    "Urban Assembly Institute of Math and Science for Y"
+                ],
+                "average_length": 26.215049104563835
+            }
+        },
+        "#Grade 2": {
+            "REAL": {
+                "count": 3592,
+                "max_value": 349.0,
+                "min_value": 6.0,
+                "mean": 48.287026726057874,
+                "std": 49.45686934325063
+            },
+            "TEXT": {
+                "count": 889,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%Hispanic": {
+            "REAL": {
+                "count": 5996,
+                "max_value": 1.0,
+                "min_value": 0.013636363636363636,
+                "mean": 0.5098073534100332,
+                "std": 0.26661114247295636
+            },
+            "TEXT": {
+                "count": 928,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Grade 4": {
+            "REAL": {
+                "count": 3441,
+                "max_value": 337.0,
+                "min_value": 6.0,
+                "mean": 48.5945945945946,
+                "std": 50.35971003765665
+            },
+            "TEXT": {
+                "count": 867,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL Chinese": {
+            "REAL": {
+                "count": 198,
+                "max_value": 817.0,
+                "min_value": 6.0,
+                "mean": 68.27272727272727,
+                "std": 114.63735691140427
+            },
+            "TEXT": {
+                "count": 945,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "%ELL Spanish": {
+            "REAL": {
+                "count": 916,
+                "max_value": 1.0,
+                "min_value": 0.02155688622754491,
+                "mean": 0.6616344419223675,
+                "std": 0.27255360384159505
+            },
+            "TEXT": {
+                "count": 227,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL Urdu": {
+            "REAL": {
+                "count": 105,
+                "max_value": 65.0,
+                "min_value": 6.0,
+                "mean": 13.790476190476191,
+                "std": 12.192656055101553
+            },
+            "TEXT": {
+                "count": 1038,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "MATH %Level 4": {
+            "REAL": {
+                "count": 2351,
+                "max_value": 0.9529411764705882,
+                "min_value": 0.013636363636363636,
+                "mean": 0.19231949190284703,
+                "std": 0.16091737010876292
+            },
+            "TEXT": {
+                "count": 4314,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "ELA #Level 4": {
+            "REAL": {
+                "count": 1937,
+                "max_value": 728.0,
+                "min_value": 6.0,
+                "mean": 47.88590604026847,
+                "std": 75.06379247170268
+            },
+            "TEXT": {
+                "count": 4726,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#ELL Russian": {
+            "REAL": {
+                "count": 83,
+                "max_value": 137.0,
+                "min_value": 6.0,
+                "mean": 25.27710843373494,
+                "std": 21.337965064284543
+            },
+            "TEXT": {
+                "count": 1060,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Female": {
+            "REAL": {
+                "count": 6195,
+                "max_value": 1033.0,
+                "min_value": 6.0,
+                "mean": 116.74463276836158,
+                "std": 151.27504895816273
+            },
+            "TEXT": {
+                "count": 729,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        },
+        "#Other": {
+            "REAL": {
+                "count": 1014,
+                "max_value": 193.0,
+                "min_value": 6.0,
+                "mean": 18.107495069033515,
+                "std": 20.087758227561142
+            },
+            "TEXT": {
+                "count": 5910,
+                "shortest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "longest_values": [
+                    "s",
+                    "s",
+                    "s",
+                    "s",
+                    "s"
+                ],
+                "average_length": 1.0
+            }
+        }
+    },
+    "itemset": {
+        "-REAL--TEXT-": 66,
+        "": 1,
+        "-TEXT-": 3
+    }
+}
+{
+    "dataset_name": "25cx-4jug.tsv.gz",
+    "columns": {
+        "FY15": {
+            "column_name": "FY15",
+            "number_distinct_values": 1264,
+            "frequent_values": [
+                "NA",
+                "100%",
+                "84%",
+                "95%",
+                "99%"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "FY17": {
+            "column_name": "FY17",
+            "number_distinct_values": 1266,
+            "frequent_values": [
+                "NA",
+                "100%",
+                "99%",
+                "100.00%",
+                "92%"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "Desired Direction": {
+            "column_name": "Desired Direction",
+            "number_distinct_values": 3,
+            "frequent_values": [
+                "Up",
+                "*",
+                "Down"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "5 Yr Trend": {
+            "column_name": "5 Yr Trend",
+            "number_distinct_values": 4,
+            "frequent_values": [
+                "Neutral",
+                "Up",
+                "Down",
+                "NA"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "Performance Indicator": {
+            "column_name": "Performance Indicator",
+            "number_distinct_values": 1474,
+            "frequent_values": [
+                "E-mails responded to in 14 days (%)",
+                "Letters responded to in 14 days (%)",
+                "Completed requests for interpretation",
+                "Completed customer requests for interpretation",
+                "Workplace injuries reported"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "FY16": {
+            "column_name": "FY16",
+            "number_distinct_values": 1293,
+            "frequent_values": [
+                "100%",
+                "NA",
+                "100",
+                "95%",
+                "100.00%"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "Agency": {
+            "column_name": "Agency",
+            "number_distinct_values": 47,
+            "frequent_values": [
+                "DOE",
+                "ACS",
+                "HRA",
+                "DOT",
+                "DCAS"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "TGT18": {
+            "column_name": "TGT18",
+            "number_distinct_values": 323,
+            "frequent_values": [
+                "*",
+                "\u2193",
+                "\u2191",
+                "85%",
+                "90%"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "MMR Goal": {
+            "column_name": "MMR Goal",
+            "number_distinct_values": 23,
+            "frequent_values": [
+                "1a",
+                "1b",
+                "2a",
+                "3a",
+                "4a"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "TGT17": {
+            "column_name": "TGT17",
+            "number_distinct_values": 315,
+            "frequent_values": [
+                "*",
+                "\u2193",
+                "\u2191",
+                "85%",
+                "90%"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "FY14": {
+            "column_name": "FY14",
+            "number_distinct_values": 1220,
+            "frequent_values": [
+                "NA",
+                "100%",
+                "99%",
+                "94%",
+                "1"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "Critical": {
+            "column_name": "Critical",
+            "number_distinct_values": 2,
+            "frequent_values": [
+                " FALSE",
+                " TRUE"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        },
+        "FY13": {
+            "column_name": "FY13",
+            "number_distinct_values": 1170,
+            "frequent_values": [
+                "NA",
+                "100%",
+                "91%",
+                "97%",
+                "96%"
+            ],
+            "number_non_empty_cells": 1729,
+            "number_empty_cells": 0
+        }
+    },
+    "dataset_profile": {
+        "FY15": {
+            "REAL": {
+                "count": 473,
+                "max_value": 976.0,
+                "min_value": 0.0,
+                "mean": 184.25765327695572,
+                "std": 245.1091958345373
+            },
+            "TEXT": {
+                "count": 1256,
+                "shortest_values": [
+                    "NA",
+                    "3%",
+                    "NA",
+                    "NA",
+                    "NA"
+                ],
+                "longest_values": [
+                    "1,041,841",
+                    "$3,596,836",
+                    "$3,878,569",
+                    "10,651,475",
+                    "$11,234,213"
+                ],
+                "average_length": 5.05015923566879
+            }
+        },
+        "FY17": {
+            "REAL": {
+                "count": 492,
+                "max_value": 990.0,
+                "min_value": 0.0,
+                "mean": 181.41567355465233,
+                "std": 247.73706096820533
+            },
+            "TEXT": {
+                "count": 1237,
+                "shortest_values": [
+                    "NA",
+                    "NA",
+                    "NA",
+                    "NA",
+                    "NA"
+                ],
+                "longest_values": [
+                    "$2,499,910",
+                    "271,980.00",
+                    "$49,755.30",
+                    "$1,584,137",
+                    "$10,009,946"
+                ],
+                "average_length": 5.046887631366209
+            }
+        },
+        "Desired Direction": {
+            "TEXT": {
+                "count": 1729,
+                "shortest_values": [
+                    "*",
+                    "*",
+                    "*",
+                    "*",
+                    "*"
+                ],
+                "longest_values": [
+                    "Down",
+                    "Down",
+                    "Down",
+                    "Down",
+                    "Down"
+                ],
+                "average_length": 2.1717755928282245
+            }
+        },
+        "5 Yr Trend": {
+            "TEXT": {
+                "count": 1729,
+                "shortest_values": [
+                    "NA",
+                    "Up",
+                    "Up",
+                    "Up",
+                    "Up"
+                ],
+                "longest_values": [
+                    "Neutral",
+                    "Neutral",
+                    "Neutral",
+                    "Neutral",
+                    "Neutral"
+                ],
+                "average_length": 4.063042220936958
+            }
+        },
+        "Performance Indicator": {
+            "TEXT": {
+                "count": 1729,
+                "shortest_values": [
+                    "\u2013 Rape",
+                    "\u2013 Lead",
+                    "\u2013 Lead",
+                    "\u2013 Rape",
+                    "Escapes"
+                ],
+                "longest_values": [
+                    "Time to notify agencies of arrest notifications for current childcare, home care and family care workers after receipt from State Division of Criminal Justice Services (days)",
+                    "Youth who are out-of-school, attend a DYCD-funded training or employment program, and attain a degree or certificate by the end of the 3rd quarter after exiting the program (%)",
+                    "Youth who attend a training program while in school and are placed in post-secondary education, employment, or advanced training during the 1st quarter after exiting the program (%)",
+                    "Time to notify agencies of prospective childcare, home care and family care workers with criminal records after receipt from State Division of Criminal Justice Services and FBI (days)",
+                    "Youth who are out-of-school, attend a DYCD-funded training or employment program, and are placed in post-secondary education, employment, or advanced training in the 1st quarter after exiting the program (%)"
+                ],
+                "average_length": 49.396182764603815
+            }
+        },
+        "FY16": {
+            "REAL": {
+                "count": 479,
+                "max_value": 997.0,
+                "min_value": 0.0,
+                "mean": 176.31311064718165,
+                "std": 242.89267188720086
+            },
+            "TEXT": {
+                "count": 1250,
+                "shortest_values": [
+                    "8%",
+                    "NA",
+                    "NA",
+                    "NA",
+                    "NA"
+                ],
+                "longest_values": [
+                    "271,252.20",
+                    "$23,816.40",
+                    "$2,123,391",
+                    "$1,201,468",
+                    "$10,139,937"
+                ],
+                "average_length": 5.1448
+            }
+        },
+        "Agency": {
+            "REAL": {
+                "count": 13,
+                "max_value": 311.0,
+                "min_value": 311.0,
+                "mean": 311.0,
+                "std": 0.0
+            },
+            "TEXT": {
+                "count": 1716,
+                "shortest_values": [
+                    "TLC",
+                    "BIC",
+                    "DOF",
+                    "DOB",
+                    "ACS"
+                ],
+                "longest_values": [
+                    "NYPL-Research",
+                    "NYPL-Research",
+                    "NYPL-Research",
+                    "NYPL-Research",
+                    "NYPL-Research"
+                ],
+                "average_length": 3.5297202797202796
+            }
+        },
+        "TGT18": {
+            "REAL": {
+                "count": 170,
+                "max_value": 849.0,
+                "min_value": 0.0,
+                "mean": 73.76564705882353,
+                "std": 139.5678287466417
+            },
+            "TEXT": {
+                "count": 1559,
+                "shortest_values": [
+                    "*",
+                    "*",
+                    "*",
+                    "*",
+                    "*"
+                ],
+                "longest_values": [
+                    "1,027,346",
+                    "2,600,000",
+                    "$3,783.00",
+                    "1,900,000",
+                    "1,470,000"
+                ],
+                "average_length": 2.059012187299551
+            }
+        },
+        "MMR Goal": {
+            "TEXT": {
+                "count": 1729,
+                "shortest_values": [
+                    "1c",
+                    "1c",
+                    "1e",
+                    "3a",
+                    "3a"
+                ],
+                "longest_values": [
+                    "1a",
+                    "1b",
+                    "NA",
+                    "2a",
+                    "NA"
+                ],
+                "average_length": 2.0
+            }
+        },
+        "TGT17": {
+            "REAL": {
+                "count": 172,
+                "max_value": 920.0,
+                "min_value": 0.0,
+                "mean": 78.2971511627907,
+                "std": 149.16009938801417
+            },
+            "TEXT": {
+                "count": 1557,
+                "shortest_values": [
+                    "*",
+                    "*",
+                    "*",
+                    "*",
+                    "*"
+                ],
+                "longest_values": [
+                    "1,024,107",
+                    "2,800,000",
+                    "$3,622.80",
+                    "1,840,000",
+                    "1,000,000"
+                ],
+                "average_length": 2.052023121387283
+            }
+        },
+        "FY14": {
+            "REAL": {
+                "count": 466,
+                "max_value": 995.0,
+                "min_value": 0.0,
+                "mean": 188.64944206008587,
+                "std": 250.28835192202453
+            },
+            "TEXT": {
+                "count": 1263,
+                "shortest_values": [
+                    "NA",
+                    "NA",
+                    "NA",
+                    "NA",
+                    "NA"
+                ],
+                "longest_values": [
+                    "1,209,148",
+                    "1,104,940",
+                    "$2,987,936",
+                    "$3,980,941",
+                    "$11,360,685"
+                ],
+                "average_length": 4.910530482977038
+            }
+        },
+        "Critical": {
+            "TEXT": {
+                "count": 1729,
+                "shortest_values": [
+                    " TRUE",
+                    " TRUE",
+                    " TRUE",
+                    " TRUE",
+                    " TRUE"
+                ],
+                "longest_values": [
+                    " FALSE",
+                    " FALSE",
+                    " FALSE",
+                    " FALSE",
+                    " FALSE"
+                ],
+                "average_length": 5.687680740312319
+            }
+        },
+        "FY13": {
+            "REAL": {
+                "count": 433,
+                "max_value": 999.0,
+                "min_value": 0.0,
+                "mean": 179.21966050808322,
+                "std": 243.93646495299205
+            },
+            "TEXT": {
+                "count": 1296,
+                "shortest_values": [
+                    "NA",
+                    "NA",
+                    "NA",
+                    "NA",
+                    "NA"
+                ],
+                "longest_values": [
+                    "3,016,412",
+                    "1,450,315",
+                    "$4,234,010",
+                    "$1,995,846",
+                    "$11,077,244"
+                ],
+                "average_length": 4.7044753086419755
+            }
+        }
+    },
+    "itemset": {
+        "-REAL--TEXT-": 8,
+        "-TEXT-": 5
+    }
+}
