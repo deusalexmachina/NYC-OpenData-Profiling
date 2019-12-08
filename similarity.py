@@ -119,7 +119,8 @@ def comp_jac(s0: str, s1: str, pre_process=no_transform) -> float:
     proc_s1 = pre_process(s0)
     proc_s2 = pre_process(s1)
 
-    jac = Jaccard(len(shortest_str(s0, s1))//2)
+    # jac = Jaccard(len(shortest_str(s0, s1))//2)
+    jac = Jaccard(2)
     dist = jac.distance(proc_s1, proc_s2)
     # print('strs:', proc_s1, '|', proc_s2)
     # print('distance:', dist)
