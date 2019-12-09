@@ -39,7 +39,7 @@ def run():
         ### BASIC PROFILE ###
         dct_output, dct_itemset = get_dataset_profile(spark, df_cols)
         append_data_profile(ds_dct, dct_output)
-        print(ds_dct)
+        # print(ds_dct)
         ds_dct['itemset'] = dct_itemset
 
         # add the counts for df_itemset to master
