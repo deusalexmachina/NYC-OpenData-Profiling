@@ -156,29 +156,29 @@ def get_analysis(sc, col_dict):
     stats_dict = {}
     if "INTEGER" in col_dict.keys():
         int_rdd = sc.parallelize(col_dict["INTEGER"])
-        temp_dict = {}
+        temp_dict = {"type": "INTEGER"}
         int_stats = int_rdd.stats()
         int_count, int_max, int_min, int_mean, int_std = int_stats.count(), int_stats.max(), int_stats.min(), int_stats.mean(), int_stats.stdev()
         temp_dict["count"] = int_count
         temp_dict["max_value"] = int_max
         temp_dict["min_value"] = int_min
         temp_dict["mean"] = int_mean
-        temp_dict["std"] = int_std
+        temp_dict["stddev"] = int_std
         stats_dict["INTEGER"] = temp_dict
     if "REAL" in col_dict.keys():
         float_rdd = sc.parallelize(col_dict["REAL"])
-        temp_dict = {}
+        temp_dict = {"type": "REAL"}
         real_stats = float_rdd.stats()
         real_count, real_max, real_min, real_mean, real_std = real_stats.count(), real_stats.max(), real_stats.min(), real_stats.mean(), real_stats.stdev()
         temp_dict["count"] = real_count
         temp_dict["max_value"] = real_max
         temp_dict["min_value"] = real_min
         temp_dict["mean"] = real_mean
-        temp_dict["std"] = real_std
+        temp_dict["stddev"] = real_std
         stats_dict["REAL"] = temp_dict
     if "DATE/TIME" in col_dict.keys():
         dates = col_dict["DATE/TIME"]
-        temp_dict = {}
+        temp_dict = {"type": "DATE/TIME"}
         count = len(dates)
         dates = sort_dates(dates, count)
         max_date = dates[-1]
@@ -192,8 +192,8 @@ def get_analysis(sc, col_dict):
     if "TEXT" in col_dict.keys():
         # print("Text Found")
         text_rdd = sc.parallelize(col_dict["TEXT"])
-        temp_dict = {}
-        text_count = text_rdd.count() 
+        temp_dict = {"type": "TEXT"}
+        text_count = text_rdd.count()
         text_sort = text_rdd.map(lambda x: [x, len(x)]).sortBy(lambda x: x[1])
         text_len = text_sort.collect()
         text_top5, text_low5 = [], []
