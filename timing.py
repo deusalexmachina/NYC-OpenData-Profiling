@@ -81,11 +81,6 @@ def timed(fn, files: List[str] = None) -> None:
         total_runtime_load = time_end - time_start_all
         print('running avg runtime (including load):', total_runtime_load / actual_len_dfs)
 
-        # Save the output for the df to json for each run
-        with open("results_times/master_dct.json", "a+") as json_file:
-            json.dump(output, json_file, indent=4)
-            json_file.write("\n")
-
         # keep a track of run times for visualization later
         run_time_record = np.append(run_time_record, [runtime])
         average_time_record = np.append(average_time_record, [total_runtime_load / actual_len_dfs])

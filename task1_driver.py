@@ -48,6 +48,11 @@ def run():
         ### DONE: update master_dct with dataset ###
         master_dct.update({ds_dct['dataset_name']: ds_dct})
 
+        # Save the output for the df to json for each run
+        with open("results_times/master_dct.json", "a+") as json_file:
+            json.dump(master_dct, json_file, indent=4)
+            json_file.write("\n")
+
         print("Master Itemset: ", master_itemset)
         with open("master_itemset.json", "w") as json_file:
             json.dump(master_itemset, json_file, indent=4)
