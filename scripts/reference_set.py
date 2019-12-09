@@ -4,11 +4,13 @@ create reference set for task2 matching by grouping by true_label (semantic type
 {true_label: [top_n frequent values]}
 """
 
+from os import makedirs
+from os.path import isdir
 import pandas as pd
 
 df = pd.read_csv('Task 2 - top10_frequent_vals.csv')
 
-df['true_label'] = df['col_name'].map(lambda x: x.strip().split(', '))
+df['true_label'] = df['col_name'].map(lambda x: x.strip().strip(',').split(', '))
 
 df_flat = df.explode('true_label')
 df_flat['frequent_values->counts_(top_10)'] = df_flat['frequent_values->counts_(top_10)'].map(lambda x: [tuple(s.split('->')) for s in eval(x)])
@@ -29,8 +31,13 @@ def create_reference_set(df_flatter, kind, top_n=10):
     return df_grouped
 
 
+base_path = 'results_reference_sets'
+
+if not isdir(base_path):
+    makedirs(base_path)
+
 df_grouped_values = create_reference_set(df_flatter, 'frequent_value')
-df_grouped_values.to_csv('reference_set_values.csv', index=False)
+df_grouped_values.to_csv(f'{base_path}/reference_set_values.csv', index=False)
 
 df_grouped_cols = create_reference_set(df_flatter, 'col_name_ta')
-df_grouped_cols.to_csv('reference_set_columns.csv', index=False)
+df_grouped_cols.to_csv(f'{base_path}/reference_set_columns.csv', index=False)
