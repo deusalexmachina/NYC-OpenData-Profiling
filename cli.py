@@ -49,6 +49,13 @@ def get_str_arg(i: int) -> Union[str, None]:
 ### TYPICAL ARGS ###
 
 
+def get_sort_arg(i=4) -> bool:
+    """
+    rand argument from cli to shuffle files before running (run in random order)
+    """
+    return get_bool_arg(i)
+
+
 def get_rand_arg(i=3) -> bool:
     """
     rand argument from cli to shuffle files before running (run in random order)

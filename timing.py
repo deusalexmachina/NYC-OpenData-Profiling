@@ -12,7 +12,7 @@ from typing import List
 
 import random
 
-from cli import get_rand_arg, get_limit_arg, get_ds_path_arg
+from cli import get_rand_arg, get_limit_arg, get_ds_path_arg, get_sort_arg
 
 
 def timed(fn, files: List[str] = None) -> None:
@@ -41,16 +41,17 @@ def timed(fn, files: List[str] = None) -> None:
     dfs = None
 
     rand = get_rand_arg()
+    to_sort = get_sort_arg()
 
     if files is None:
         ds_path = get_ds_path_arg()
         if ds_path is None:
             print('No ds path')
             exit()
-        len_dfs, dfs = datasets_to_dataframes(spark, ds_path, rand)
+        len_dfs, dfs = datasets_to_dataframes(spark, ds_path, rand, to_sort)
     else:
         # no random order if files are passed (call random.shuffle before passing files)
-        len_dfs, dfs = datasets_to_dataframes_select(spark, files)
+        len_dfs, dfs = datasets_to_dataframes_select(spark, files, False, to_sort)
 
     limit = get_limit_arg()
     if limit is None:

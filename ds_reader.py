@@ -2,7 +2,7 @@
 
 # Goal: read in the datasets and create rdd's out of them
 
-from typing import List, Generator, Iterable, Union
+from typing import List, Generator, Iterable, Union, Tuple
 
 import sys
 from os.path import splitext, basename
@@ -13,30 +13,53 @@ import random
 from pyspark.sql import DataFrame, SparkSession
 
 # hdfs commands to interact with the hdfs outside of Spark
-HDFS_LIST_DIR = 'hdfs dfs -ls -C {ds_path}'
+HDFS_LIST_DIR_OPTIONS = """hdfs dfs -ls {ds_path} | sed 1d | awk '{{print $8 "\t" $5}}'"""
 HDFS_SIZE_F = 'hdfs dfs -stat %b {ds_path}'
 
 
-def run_hdfs_cmd(cmd: str) -> bytes:
+def run_hdfs_cmd(cmd: str, shell=True) -> bytes:
     """
     allows an arbitrary hdfs command to be run
     """
-    cmd: List[str] = cmd.split(' ')
-    return subprocess.check_output(cmd).decode('utf_8').strip()
+    if not shell:
+        cmd: List[str] = cmd.split(' ')
+    return subprocess.check_output(cmd, shell=shell).decode('utf_8').strip()
 
 
-def get_ds_file_names(ds_path: str) -> List[str]:
-    """
-    get the file names of compressed (.gz) datasets in the directory
-    """
-    # cmd to get list of files in hdfs dir
-    files = run_hdfs_cmd(HDFS_LIST_DIR.format(ds_path=ds_path)).split('\n')  # sanitize output into list of strings
-
+def filter_files(files: List[str]) -> List[str]:
     # filter files
     files: List[str] = [
-        ds_path + '/' + basename(rel_path) for rel_path in files
+        rel_path for rel_path in files
         if splitext(rel_path)[-1] == ".gz" and basename(rel_path)
         != "datasets.tsv.gz"]
+    return files
+
+
+def get_ds_file_size(f_path: str) -> int:
+    """
+    return in bytes
+    """
+    return int(run_hdfs_cmd(HDFS_SIZE_F.format(ds_path=f_path)))
+
+
+def generalize_paths(files: Union[str, List[str]]) -> str:
+    if type(files) == list:
+        files: str = ' '.join(files)
+    else:
+        files: str = files
+    return files
+
+
+def get_ds_file_names(files: Union[str, List[str]], to_sort = False) -> List[str]:
+    """
+    reads dir or list of files and returns ds paths in ascending sorted order of file size on hdfs
+    """
+    files: str = generalize_paths(files)
+    files_n_sizes = [f.split('\t') for f in run_hdfs_cmd(HDFS_LIST_DIR_OPTIONS.format(ds_path=files)).split('\n')]
+    files_n_sizes = [(name, int(size)) for name, size in files_n_sizes]
+    files_n_sizes = sorted(files_n_sizes, key=lambda x: x[1])
+    files = [tup[0] for tup in files_n_sizes]
+    files = filter_files(files)
 
     return files
 
@@ -49,7 +72,7 @@ def generate_dataframes(spark: SparkSession, files: Iterable[str]) -> Generator[
     """
     for i, path in enumerate(files):
         # limit files to a certain filesize to prevent memory issues
-        if int(run_hdfs_cmd(HDFS_SIZE_F.format(ds_path=path))) < 6e+8:  # 600MB
+        if get_ds_file_size(path) < 6e+8:  # 600MB
             # read compressed tsv file
             df = spark.read.csv(path, sep="\t", header=True, inferSchema=True)
             df.ds_name = basename(path)
@@ -65,26 +88,26 @@ def generate_dataframes(spark: SparkSession, files: Iterable[str]) -> Generator[
         # yield i, df
 
 
-def datasets_to_dataframes(spark: SparkSession, ds_path: str, rand: bool = False) -> Union[int, Generator[DataFrame, None, None]]:
+def datasets_to_dataframes(spark: SparkSession, ds_path: str, rand: bool = False, to_sort: bool = False) -> Union[int, Generator[DataFrame, None, None]]:
     """
-    datasets_to_dataframes takes the path to the hdfs directory that holds all of the datasets, reads them into dataframes (except the meta file "datasets.tsv"). 
+    deprecated but kept to call datasets_to_dataframes_select
+    """
+    return datasets_to_dataframes_select(spark, ds_path, rand, to_sort)
+
+
+def datasets_to_dataframes_select(
+        spark: SparkSession, files: Union[str, List[str]],
+        rand: bool = False, to_sort: bool = False) -> Union[int, Generator[DataFrame, None, None]]:
+    """
+    datasets_to_dataframes takes a list of file paths in the hdfs or the directory path, and reads the files into dataframes.
     it outputs the dataframes in a generator. a generator is a lazily evaluated iterator, which allows the dataset to be read (and stored in memory) only when requested (i.e. iterated in a for loop).
     using this pattern, n datasets can be read into mem at a time and operated on
     """
-    files: List[str] = get_ds_file_names(ds_path)
+    files: List[str] = get_ds_file_names(files, to_sort)
+
     if rand:
         random.shuffle(files)
 
-    return datasets_to_dataframes_select(spark, files)
-
-
-def datasets_to_dataframes_select(spark: SparkSession, files: List[str]) -> Union[int,
-                                                                       Generator[DataFrame, None, None]]:
-    """
-    datasets_to_dataframes takes a list of files in the hdfs, and reads the files into dataframes.
-    it outputs the dataframes in a generator. a generator is a lazily evaluated iterator, which allows the dataset to be read (and stored in memory) only when requested (i.e. iterated in a for loop).
-    using this pattern, n datasets can be read into mem at a time and operated on
-    """
     df_generator = generate_dataframes(spark, files)
 
     return len(files), df_generator
