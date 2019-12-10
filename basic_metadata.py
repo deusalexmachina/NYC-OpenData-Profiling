@@ -125,10 +125,12 @@ def get_basic_metadata(df_cols: Union[DataFrame, Column], ds_dct: Dict):
         }
     }
     """
-    get_count_distincts(df_cols, ds_dct)
-    get_top_5(df_cols, ds_dct)
     get_non_empty(df_cols, ds_dct)
     get_empty(df_cols, ds_dct)
+    get_count_distincts(df_cols, ds_dct)
+    get_top_5(df_cols, ds_dct)
+    
+    
 
 
 def get_val_from_single_val_col(df: Column):
