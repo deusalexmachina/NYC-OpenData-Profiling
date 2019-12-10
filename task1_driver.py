@@ -15,8 +15,9 @@ import json
 def append_data_profile(ds_dct, dct_output):
     for col, dct in dct_output.items():
         if not 'data_types' in ds_dct[OUTPUT_KEY][col]:
-            ds_dct[OUTPUT_KEY][col]['data_types'] = {}
-        ds_dct[OUTPUT_KEY][col]['data_types'].update(dct)
+            ds_dct[OUTPUT_KEY][col]['data_types'] = []
+        for col2, dct2 in dct.items():
+            ds_dct[OUTPUT_KEY][col]['data_types'].append(dct2)
 
 
 def run():
