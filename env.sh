@@ -9,13 +9,16 @@ spark-submit \
 --conf spark.pyspark.python=$PYTHON_PATH \
 --conf spark.executor.memoryOverhead=6G \
 --executor-memory 6G \
+--py-files similarity.py \
 $1
 
 # # TODO: below doesn't work
 # PYTHON_PATH="./CONDA/big_data/bin/python"
 # spark-submit \
 # --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=$PYTHON_PATH \
-# --archives big_data.zip#CONDA \
+# --archives hdfs://user/vn500/big_data.zip#CONDA \
+# --master yarn \
+# --deploy-mode cluster \
 # --conf spark.executor.memoryOverhead=6G \
 # --executor-memory 6G \
 # $1
