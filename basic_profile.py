@@ -157,7 +157,7 @@ def get_analysis(sc, col_dict):
     stats_dict = {}
     if "INTEGER" in col_dict.keys():
         int_rdd = sc.parallelize(col_dict["INTEGER"])
-        temp_dict = {"type": "INTEGER"}
+        temp_dict = {"type": "INTEGER (LONG)"}
         int_stats = int_rdd.stats()
         int_count, int_max, int_min, int_mean, int_std = int_stats.count(), int_stats.max(), int_stats.min(), int_stats.mean(), int_stats.stdev()
         temp_dict["count"] = int_count
