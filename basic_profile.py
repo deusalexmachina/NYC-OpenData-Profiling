@@ -132,15 +132,17 @@ def get_col_array(col):
 
 
 
-ddef sort_dates(arr, L):
-	''' Get max and min date '''
+def sort_dates(arr, L):
+    ''' 
+    Get max and min date 
+    '''
     max_date = datetime(1750, 1, 1)
     min_date = datetime.now()
     for i in range(0,L,1):
         if arr[i] > max_date:
-        	max_date = arr[i]
+            max_date = arr[i]
         if min_date > arr[i]:
-        	min_date = arr[i]
+            min_date = arr[i]
     return [min_date, max_date]
 
 
