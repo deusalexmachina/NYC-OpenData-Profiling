@@ -18,7 +18,7 @@ df_flatter = df_flat.explode('frequent_values->counts_(top_10)')
 df_flatter[['frequent_value', 'count']] = df_flatter['frequent_values->counts_(top_10)'].apply(lambda x: pd.Series([x[0], int(x[1])]))
 
 
-def create_reference_set(df_flatter, kind, top_n=10):
+def create_reference_set(df_flatter, kind, top_n=20):
     """
     groupby true_label and kind to get counts and then limit to the top_n counts
     """
