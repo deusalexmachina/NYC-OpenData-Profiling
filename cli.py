@@ -15,7 +15,7 @@ def get_bool_arg(i: int) -> bool:
         arg = sys.argv[i]
     except Exception:
         arg = False
-    if arg == '-':
+    if arg == '-' or arg == 'False':
         arg = False
     else:
         try:

@@ -13,7 +13,7 @@ import random
 from pyspark.sql import DataFrame, SparkSession
 
 # hdfs commands to interact with the hdfs outside of Spark
-HDFS_LIST_DIR_OPTIONS = """hdfs dfs -ls {ds_path} | sed 1d | awk '{{print $8 "\t" $5}}'"""
+HDFS_LIST_DIR_OPTIONS = """hdfs dfs -ls {ds_path} | awk '{{print $8 "\t" $5}}'"""
 HDFS_SIZE_F = 'hdfs dfs -stat %b {ds_path}'
 
 
@@ -57,7 +57,8 @@ def get_ds_file_names(files: Union[str, List[str]], to_sort = False) -> List[str
     files: str = generalize_paths(files)
     files_n_sizes = [f.split('\t') for f in run_hdfs_cmd(HDFS_LIST_DIR_OPTIONS.format(ds_path=files)).split('\n')]
     files_n_sizes = [(name, int(size)) for name, size in files_n_sizes]
-    files_n_sizes = sorted(files_n_sizes, key=lambda x: x[1])
+    if to_sort:
+        files_n_sizes = sorted(files_n_sizes, key=lambda x: x[1])
     files = [tup[0] for tup in files_n_sizes]
     files = filter_files(files)
 
