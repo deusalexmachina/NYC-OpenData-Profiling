@@ -132,17 +132,16 @@ def get_col_array(col):
 
 
 
-def sort_dates(arr, L):
-    ''' 
-        Simple bubble sort fucntion to order datetime 
-        objects
-
-    '''
+ddef sort_dates(arr, L):
+	''' Get max and min date '''
+    max_date = datetime(1750, 1, 1)
+    min_date = datetime.now()
     for i in range(0,L,1):
-        for j in range(0, L-i-1, 1):
-            if arr[j] > arr[j+1]: 
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-    return arr
+        if arr[i] > max_date:
+        	max_date = arr[i]
+        if min_date > arr[i]:
+        	min_date = arr[i]
+    return [min_date, max_date]
 
 
 
