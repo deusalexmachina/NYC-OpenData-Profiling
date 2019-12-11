@@ -4,7 +4,7 @@
 
     return: dataset_dict -> Dictionary with the metadata for each column {column_name: {datatypes: {attributes}}}
             frequent_itemsets -> return the itemset for that dictionary, for instance:
-                                { "REALDATEINTEGERTEXT": 1, "REALDATEINTEGER": 2, "DATE":1 ... }
+                                { "-REAL-DATE-INTEGER-TEXT-": 1, "-REAL-DATE-INTEGER-": 2, "DATE":1 ... }
                                 suggesting there was one column with real, date, integer and text values
                                 two columns with real, date and integer and 
                                 one with just datetime values
@@ -42,18 +42,19 @@ def checkReal(element):
         Return:
         Bool -> True if element is a floating point, otherwise False
     '''
-    try: 
-        value = float(element)
-        if value:
-            return True
-    except:
-        pass
     try:
         reFloat = "^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$"
         if re.search(reFloat, element):  # if element is real (float)
-            return True
+            try: 
+                value = float(element)
+                if value:
+                    return True
+                else:
+                    return False
+            except:
+                pass
     except:
-        print("Failed to match real element: {}".format(element))
+        # print("Failed to match real element: {}".format(element))
         pass
     return False
 
@@ -109,18 +110,21 @@ def checkInt(element):
         followed by digits 0 to 9 def checkDate(element):
     '''
     try: 
+        element = element.replace(",", "")
+        element = element.replace("$", "")
         value = int(element)
         if value:
             return True
     except:
         pass
     try:
+        element = element.replace(",", "")
+        element = element.replace("$", "")
         reInt = "^[-+]?[0-9]*$"
         if re.search(reInt, element):
             return True
     except:
         return False
-
     return False
 
 
@@ -160,7 +164,7 @@ def get_analysis(sc, col_dict):
         int_rdd = sc.parallelize(col_dict["INTEGER"])
         temp_dict = {"type": "INTEGER"}
         int_stats = int_rdd.stats()
-        int_count, int_max, int_min, int_mean, int_std = int_stats.count(), int_stats.max(), int_stats.min(), int_stats.mean(), int_stats.stdev()
+        int_count, int_max, int_min, int_mean, int_std = type_counts["INTEGER"], int_stats.max(), int_stats.min(), int_stats.mean(), int_stats.stdev()
         temp_dict["count"] = int_count
         temp_dict["max_value"] = int_max
         temp_dict["min_value"] = int_min
@@ -179,7 +183,7 @@ def get_analysis(sc, col_dict):
         temp_dict["stddev"] = real_std
         stats_dict["REAL"] = temp_dict
     if "DATE/TIME" in col_dict.keys():
-        dates = col_dict["DATE/TIME"]
+        dates = list(col_dict["DATE/TIME"])
         temp_dict = {"type": "DATE/TIME"}
         count = len(dates)
         dates = sort_dates(dates, count)
@@ -197,22 +201,26 @@ def get_analysis(sc, col_dict):
         temp_dict = {"type": "TEXT"}
         text_count = text_rdd.count()
         text_sort = text_rdd.map(lambda x: [x, len(x)]).sortBy(lambda x: x[1])
-        text_len = text_sort.collect()
+        text_distinct = text_rdd.distinct().map(lambda x: [x, len(x)]).sortBy(lambda x: x[1]).collect()
         text_top5, text_low5 = [], []
-        for i, j in text_len[-5:]:
-            text_top5.append(i)
-        for i, j in text_len[:5]:
-            text_low5.append(i)
-        text_avg_len = text_sort.map(lambda x: x[1]).sum()
+        if len(text_distinct) >= 5: 
+            for i, j in text_distinct[-5:]:
+                text_top5.append(i)
+            for i, j in text_distinct[:5]:
+                text_low5.append(i)
+        else: #  in case the column has less than  5 distinct values
+            for i, j in text_distinct:
+                text_low.append(i)
+            for i, j in text_distinct[::-1]: # to maintain the order even if there are less than 5 elements
+                text_top5.append(i)
+        text_total_len = text_sort.map(lambda x: x[1]).sum()
         temp_dict["count"] = text_count
         temp_dict["shortest_values"] = text_low5
         temp_dict["longest_values"] = text_top5
-        temp_dict["average_length"] = text_avg_len/text_count
+        temp_dict["average_length"] = text_total_len/text_count
         stats_dict["TEXT"] = temp_dict
     return stats_dict
 
-    
-  
 
 '''
         Accepts the dataframe with two columns (keys: column name and value: row value)
@@ -252,6 +260,7 @@ def get_dataset_profile(spark, df_cols):
     dataset_itemset = {}
     for column in columns:
         column_info = {}
+        total_counts = {}
         name = column
         # print(name)
         temp_df = df_cols.filter(col("key")==name).select("value") # remove these values from the DF # also sorting! 
@@ -259,8 +268,8 @@ def get_dataset_profile(spark, df_cols):
         # df_cols = df_cols.subtract(temp_df) # tried this. Gave a time of 50 secs to 140 secs excluding load time
         # temp_df = temp_df.select("value")
         col_values = get_col_array(temp_df)
-        c_list = ['null', 'None', 'N/A', '--', '-', '---', 'none', 'nan', 'NAN', 'No Data']
-        checkList = set(c_list)
+        #c_list = ['null', 'None', 'N/A', '--', '-', '---', 'none', 'nan', 'NAN', 'No Data']
+        #checkList = set(c_list)
         item_set = ""
         flag_date, flag_real, flag_int, flag_text = [False]*4
         # for every value in the column, see which Dtype fits the best
@@ -268,8 +277,8 @@ def get_dataset_profile(spark, df_cols):
             # check if the value is a datetime -> float -> int 
             # otherwise, it's considered text
             # not changing the StructType of the DF, just monitoring
-            if str(value) in checkList:
-                continue
+            #if str(value) in checkList:
+                #continue
             if checkReal(value):
                 value = float(value) # add try
                 if "REAL" in column_info:
