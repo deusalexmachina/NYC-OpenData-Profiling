@@ -196,8 +196,8 @@ def get_analysis(sc, col_dict):
         text_rdd = sc.parallelize(col_dict["TEXT"])
         temp_dict = {"type": "TEXT"}
         text_count = text_rdd.count()
-        text_sort = text_rdd.map(lambda x: [x, len(x)]).sortBy(lambda x: x[1])
-        text_distinct = text_sort.distinct().sortBy(lambda x: x[1]).collect()
+        #text_sort = text_rdd.map(lambda x: [x, len(x)]).sortBy(lambda x: x[1])
+        text_distinct = text_rdd.distinct().map(lambda x: [x, len(x)]).sortBy(lambda x: x[1]).collect()
         text_top5, text_low5 = [], []
         if len(text_distinct) >= 5: 
             for i, j in text_distinct[-5:]:
@@ -206,7 +206,7 @@ def get_analysis(sc, col_dict):
                 text_low5.append(i)
         else: #  in case the column has less than  5 distinct values
             for i, j in text_distinct:
-                text_low.append(i)
+                text_low5.append(i)
             for i, j in text_distinct[::-1]: # to maintain the order even if there are less than 5 elements
                 text_top5.append(i)
         text_total_len = text_sort.map(lambda x: x[1]).sum()
