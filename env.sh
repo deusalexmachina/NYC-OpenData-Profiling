@@ -2,9 +2,9 @@
 module load python/gnu/3.6.5
 module load spark/2.4.0
 
-# PYTHON_PATH='/share/apps/python/3.6.5/bin/python'
+PYTHON_PATH='/share/apps/python/3.6.5/bin/python'
 
-PYTHON_PATH="$HOME/.conda/envs/big_data/bin/python"
+# PYTHON_PATH="$HOME/.conda/envs/big_data/bin/python"
 spark-submit \
 --conf spark.pyspark.python=$PYTHON_PATH \
 --conf spark.executor.memoryOverhead=6G \
