@@ -53,7 +53,7 @@ def checkReal(element):
         if re.search(reFloat, element):  # if element is real (float)
             return True
     except:
-        print("Failed to match real element: {}".format(element))
+        #print("Failed to match real element: {}".format(element))
         pass
     return False
 
