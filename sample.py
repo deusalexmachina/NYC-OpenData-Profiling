@@ -14,7 +14,7 @@ import os.path
 from cli import get_rand_arg, get_ds_path_arg
 import random
 
-from similarity import match_preprocess, match_jacc, COL
+from similarity import match_preprocess, match_jacc_min, COL
 
 def get_counts(df_cols: Union[DataFrame, Column]) -> DataFrame:
     df_output = reduce_cols(df_cols, 'count', count, other_groupBy_keys=[
@@ -116,7 +116,7 @@ def t2_get_n_frequents(gz_paths_cols: List[Tuple[str, str]],
         col = cols[i]
         ds_name = os.path.basename(gz_paths[i])
 
-        result = match_preprocess(cols[i], {'foo': df.columns}, match_jacc)
+        result = match_preprocess(cols[i], {'foo': df.columns}, match_jacc_min)
         if result is not None:
             c = result[COL]
             print('found:', c)

@@ -73,8 +73,10 @@ or to stack preprocessors:
 S_TYPE = 0
 COL = 1
 DIST = 2
-ADJ_DIST = 2
+ADJ_DIST = 3
 
+MIN_DIST = 2
+AVG_DIST = 3
 
 def comp_substr(s0: str, s1: str, pre_process=no_transform) -> bool:
     """
@@ -120,7 +122,7 @@ def comp_jac(s0: str, s1: str, pre_process=no_transform) -> float:
     proc_s2 = pre_process(s1)
 
     # jac = Jaccard(len(shortest_str(s0, s1))//2)
-    jac = Jaccard(2)
+    jac = Jaccard(3)
     dist = jac.distance(proc_s1, proc_s2)
     # print('strs:', proc_s1, '|', proc_s2)
     # print('distance:', dist)
@@ -181,7 +183,7 @@ def match_substr(s: str, dct: Dict[str, List[str]],
     return min(final_stage, key=lambda x: x[DIST])
 
 
-def match_jacc(s: str, dct: Dict[str, List[str]],
+def match_jacc_min(s: str, dct: Dict[str, List[str]],
                preprocess=no_transform) -> Union[Tuple[str, str, float], None]:
     """
     match s to a value in dct and return the matched key, value pair accordingly with distance of value from s. 
@@ -197,7 +199,7 @@ def match_jacc(s: str, dct: Dict[str, List[str]],
     so it should be good for column values but not column names
 
     example:
-    >>match_jacc('Core Subject 9,10', {'Subject': ['core subject 123 12', 'Core Subject 9,10,11']}, rm_all_but_alphanum)
+    >>match_jacc_min('Core Subject 9,10', {'Subject': ['core subject 123 12', 'Core Subject 9,10,11']}, rm_all_but_alphanum)
     ('Subject', 'Core Subject 9,10,11', 0.5)
     """
     stage_2 = []
@@ -223,16 +225,70 @@ def match_jacc(s: str, dct: Dict[str, List[str]],
     return min(final_stage, key=lambda x: x[DIST])
 
 
+def match_jacc_avg(s: str, dct: Dict[str, List[str]],
+               preprocess=no_transform) -> Union[Tuple[str, str, float], None]:
+    """
+    match s to a value in dct and return the matched key, value pair accordingly with distance of value from s. 
+    I.e. match a column value with unknown semantic type to a column value with known semantic type
+
+    match_jac works as follows:
+    there are 2 stages (no substr matching unlike match_substr). 
+    1. take the jaccard similarity distance of s to all the values in stage 2
+    2. return a tuple pair of the key and value with min avg distance
+
+    note: use this for when there may or may not be an exact match (since this relies only on jaccard). 
+    this method can give more false positives with very similar items.
+    so it should be good for column values but not column names
+
+    example:
+    >>match_jacc_min('Core Subject 9,10', {'Subject': ['core subject 123 12', 'Core Subject 9,10,11']}, rm_all_but_alphanum)
+    ('Subject', 'Core Subject 9,10,11', 0.5)
+    """
+    sums_s_type = {}  # {s_type: sum_distance}
+    for s_type, lst_targets in dct.items():
+        for target in lst_targets:
+            dist = comp_jac(s, target, preprocess)
+            res = (s_type, target, dist)
+            if dist == 0.0:
+                return res
+
+            S_TYPE = 0
+            MIN_TARGET = 1
+            MIN_DIST = 2
+            SUM_DIST = 3  # to avg distance
+            COUNT_DIST = 4  # to avg distance
+            # accumulate
+            if not s_type in sums_s_type:
+                sums_s_type[s_type] = [s_type, None, None, 0, 0]
+            
+            min_dist = sums_s_type[s_type][MIN_DIST]
+            if min_dist is None or dist < min_dist:
+                sums_s_type[s_type][MIN_TARGET] = target
+                sums_s_type[s_type][MIN_DIST] = dist
+            
+            sums_s_type[s_type][SUM_DIST] += dist
+            sums_s_type[s_type][COUNT_DIST] += 1
+
+    if len(sums_s_type) == 0:
+        return None
+
+    min_res = min(list(sums_s_type.items()), key=lambda x: x[1][SUM_DIST])[1]
+    min_final = (min_res[S_TYPE], min_res[MIN_TARGET], min_res[MIN_DIST], (min_res[SUM_DIST] / min_res[COUNT_DIST]))
+    # print('min_final:', min_final)
+
+    return min_final
+
+
 ### MAIN MATCHING TECHNIQUE ###
 
 
 def match_preprocess(s: str, dct: Dict[str, List[str]],
-                     matchfn, weights: List[float] = [0.90, 0.95, 0.97, 1.00]) -> Union[Tuple[str, str, float, float],
+                     matchfn = match_jacc_min, weights: List[float] = [0.90, 0.95, 0.97, 1.00]) -> Union[Tuple[str, str, float, float],
                                                                                         None]:
     """
     best matching function.
 
-    run matchfn (i.e. match_jacc, match_substr) through multiple preprocessing steps of increasing generality and return the result with min distance. 
+    run matchfn (i.e. match_jacc_min, match_substr) through multiple preprocessing steps of increasing generality and return the result with min distance. 
     i.e. if a distance of 0 is found at the no_transform step then there is an exact match, if not, continue and see if there is an exact match without whitespace, etc.
     if there are no exact matches return the one with smallest distance.
 
@@ -241,7 +297,7 @@ def match_preprocess(s: str, dct: Dict[str, List[str]],
     returns: Tuple[key, matched val, distance, adjusted distance] or None if no matches found
 
     example:
-    >>match_preprocess('Core Subject 9,10', {'Subject': ['core subject 123 12', 'Core Subject 9,10,11']}, match_jacc)
+    >>match_preprocess('Core Subject 9,10', {'Subject': ['core subject 123 12', 'Core Subject 9,10,11']}, match_jacc_min)
     ('Subject', 'Core Subject 9,10,11', 0.2222222222222222, 0.21111111111111108)
     """
     # operations are repeated below

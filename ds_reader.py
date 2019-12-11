@@ -50,13 +50,18 @@ def generalize_paths(files: Union[str, List[str]]) -> str:
     return files
 
 
+def get_ds_file_sizes(files: Union[str, List[str]]) -> List[Tuple[str, int]]:
+    files: str = generalize_paths(files)
+    files_n_sizes = [f.split('\t') for f in run_hdfs_cmd(HDFS_LIST_DIR_OPTIONS.format(ds_path=files)).split('\n')]
+    files_n_sizes = [(name, int(size)) for name, size in files_n_sizes]
+    return files_n_sizes
+
 def get_ds_file_names(files: Union[str, List[str]], to_sort = False) -> List[str]:
     """
     reads dir or list of files and returns ds paths in ascending sorted order of file size on hdfs
     """
     files: str = generalize_paths(files)
-    files_n_sizes = [f.split('\t') for f in run_hdfs_cmd(HDFS_LIST_DIR_OPTIONS.format(ds_path=files)).split('\n')]
-    files_n_sizes = [(name, int(size)) for name, size in files_n_sizes]
+    files_n_sizes = get_ds_file_sizes(files)
     if to_sort:
         files_n_sizes = sorted(files_n_sizes, key=lambda x: x[1])
     files = [tup[0] for tup in files_n_sizes]

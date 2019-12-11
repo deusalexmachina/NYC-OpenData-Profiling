@@ -50,8 +50,8 @@ def timed(fn, files: List[str] = None) -> None:
             exit()
         len_dfs, dfs = datasets_to_dataframes(spark, ds_path, rand, to_sort)
     else:
-        # no random order if files are passed (call random.shuffle before passing files)
-        len_dfs, dfs = datasets_to_dataframes_select(spark, files, False, to_sort)
+        # call rand and to_sort on files prior
+        len_dfs, dfs = datasets_to_dataframes_select(spark, files, False, False)
 
     limit = get_limit_arg()
     if limit is None:
