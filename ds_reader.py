@@ -72,9 +72,14 @@ def generate_dataframes(spark: SparkSession, files: Iterable[str]) -> Generator[
     because it returns a generator, the above process occurs lazily per dataset
     """
     for i, path in enumerate(files):
+        try:
+            is_small_file = get_ds_file_size(path) < 6e+8
+        except Exception:
+            is_small_file = False
         # limit files to a certain filesize to prevent memory issues
-        if get_ds_file_size(path) < 6e+8:  # 600MB
+        if is_small_file:  # 600MB
             # read compressed tsv file
+            print('path:', path)
             df = spark.read.csv(path, sep="\t", header=True, inferSchema=True)
             df.ds_name = basename(path)
             yield i, df
