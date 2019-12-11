@@ -21,4 +21,3 @@ Make sure you remove files named "average_time_record", "master_dct_0.json","mas
 
 ---
 
-@harman: I will add a module to check and remove these files if this becomes to much of a task in the future.
