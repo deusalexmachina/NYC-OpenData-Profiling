@@ -9,7 +9,7 @@ spark-submit \
 --conf spark.pyspark.python=$PYTHON_PATH \
 --conf spark.executor.memoryOverhead=6G \
 --executor-memory 6G \
---py-files similarity.py \
+--py-files similarity.py,strsimpy.zip \
 $1
 
 # # TODO: below doesn't work
