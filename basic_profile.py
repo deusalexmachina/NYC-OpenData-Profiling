@@ -205,7 +205,7 @@ def get_analysis(sc, col_dict):
                 text_low5.append(i)
         else: #  in case the column has less than  5 distinct values
             for i, j in text_distinct:
-                text_low.append(i)
+                text_low5.append(i)
             for i, j in text_distinct[::-1]: # to maintain the order even if there are less than 5 elements
                 text_top5.append(i)
         text_total_len = text_sort.map(lambda x: x[1]).sum()
