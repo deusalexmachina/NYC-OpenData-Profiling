@@ -41,6 +41,8 @@ def checkReal(element):
     '''
     import re
     try:
+        element = element.replace(",", "")
+        element = element.replace("$", "")
         reFloat = "^([-+]?[0-9]*)?\.[0-9]+([eE][-+]?[0-9]+)?$"
         if re.search(reFloat, element):  # if element is real (float)
             try: 
