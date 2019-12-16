@@ -1,22 +1,18 @@
 ''' 
     The module works on a dataset, returning the formatted dictionary of 
     data type in the dictionary for each column 
-
     return: dataset_dict -> Dictionary with the metadata for each column {column_name: {datatypes: {attributes}}}
             frequent_itemsets -> return the itemset for that dictionary, for instance:
                                 { "-REAL-DATE-INTEGER-TEXT-": 1, "-REAL-DATE-INTEGER-": 2, "DATE":1 ... }
                                 suggesting there was one column with real, date, integer and text values
                                 two columns with real, date and integer and 
                                 one with just datetime values
-
     @vincent: I am creating a different function to accept these responses 
     for each dataset. If you could add it to your code "basic_metadate.py" 
     and call it for each dataset we profile i.e. when you get the value of 
     frequent_itemsets back
-
     For the timing module, you can call the "driver" function with "timed" from your main function. 
     I'm not adding it over here since all this gets run from your "basic_metadata"
-
 '''
 
 import sys
@@ -35,6 +31,7 @@ from datetime import datetime
 from compile_itemset import combine_itemsets, most_frequent_itemsets
 
 
+
 def checkReal(element):
     '''
         Check if element is a float ie. an optional sign followed by optional digits, a dot and digits
@@ -42,8 +39,11 @@ def checkReal(element):
         Return:
         Bool -> True if element is a floating point, otherwise False
     '''
+    import re
     try:
-        reFloat = "^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$"
+        element = element.replace(",", "")
+        element = element.replace("$", "")
+        reFloat = "^([-+]?[0-9]*)?\.[0-9]+([eE][-+]?[0-9]+)?$"
         if re.search(reFloat, element):  # if element is real (float)
             try: 
                 value = float(element)
@@ -57,7 +57,6 @@ def checkReal(element):
         # print("Failed to match real element: {}".format(element))
         pass
     return False
-
 
 
 def checkText(element):
@@ -157,14 +156,13 @@ def get_analysis(sc, col_dict):
         Returns a dictionary with the desired statistics 
         for a given column if a particular datatype was seen in the 
         was seen in the column
-
     '''
     stats_dict = {}
     if "INTEGER" in col_dict.keys():
         int_rdd = sc.parallelize(col_dict["INTEGER"])
         temp_dict = {"type": "INTEGER"}
         int_stats = int_rdd.stats()
-        int_count, int_max, int_min, int_mean, int_std = type_counts["INTEGER"], int_stats.max(), int_stats.min(), int_stats.mean(), int_stats.stdev()
+        int_count, int_max, int_min, int_mean, int_std = int_stats.count(), int_stats.max(), int_stats.min(), int_stats.mean(), int_stats.stdev()
         temp_dict["count"] = int_count
         temp_dict["max_value"] = int_max
         temp_dict["min_value"] = int_min
@@ -210,7 +208,7 @@ def get_analysis(sc, col_dict):
                 text_low5.append(i)
         else: #  in case the column has less than  5 distinct values
             for i, j in text_distinct:
-                text_low.append(i)
+                text_low5.append(i)
             for i, j in text_distinct[::-1]: # to maintain the order even if there are less than 5 elements
                 text_top5.append(i)
         text_total_len = text_sort.map(lambda x: x[1]).sum()
@@ -233,14 +231,12 @@ def get_analysis(sc, col_dict):
             "min_value": real,
             "mean": real,
             "stddev": real
-
         },
         {
             "type": "DATE/TIME",
             "count": int,
             "max_value": max Date/time,
             "min_value": the min date/time
-
         },
         {
             "type": "Text",
@@ -248,7 +244,6 @@ def get_analysis(sc, col_dict):
             "shortest_values": [list of top-5 shortest values],
             "longest_values": [list of top-5 longest values],
             "average_length": float
-
         }
     '''
 
@@ -279,15 +274,7 @@ def get_dataset_profile(spark, df_cols):
             # not changing the StructType of the DF, just monitoring
             #if str(value) in checkList:
                 #continue
-            if checkReal(value):
-                value = float(value) # add try
-                if "REAL" in column_info:
-                    column_info["REAL"].append(value)
-                else: 
-                    column_info["REAL"] = [value]
-                    if not flag_real:
-                        flag_real= True
-            elif checkColName(column): # time period interval date 
+            if checkColName(column): # time period interval date 
                 date = checkDate(value)
                 if date:
                     if "DATE/TIME" in column_info:
@@ -296,7 +283,15 @@ def get_dataset_profile(spark, df_cols):
                         column_info["DATE/TIME"] = [date]
                         if not flag_date:
                             flag_date = True
-            elif checkInt(value):
+            elif checkReal(str(value)):
+                value = float(value) # add try
+                if "REAL" in column_info:
+                    column_info["REAL"].append(value)
+                else: 
+                    column_info["REAL"] = [value]
+                    if not flag_real:
+                        flag_real= True
+            elif checkInt(str(value)):
                 value = int(value)
                 if "INTEGER" in column_info:
                     column_info["INTEGER"].append(value)
@@ -349,5 +344,4 @@ if __name__ == "__main__":
     spark = SparkSession.builder.getOrCreate()
     sc  = spark.sparkContext
     # test()
-
 
