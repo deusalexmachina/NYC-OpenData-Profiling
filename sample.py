@@ -54,7 +54,7 @@ def get_n_freq_str(df_counts, top_n: Union[DataFrame, Column]) -> DataFrame:
     return df_output
 
 
-def get_task2_dfs(ds_path) -> List[Tuple[str, str]]:
+def get_task2_dfs(ds_path) -> List[Tuple[str, str, str]]:
     """
     read file from ta and return a list of tuples of parsed and converted names (to file in hdfs dir) paired with the col name to be extracted
     """
@@ -75,7 +75,7 @@ def get_task2_dfs(ds_path) -> List[Tuple[str, str]]:
         gz_name = ds_name + '.tsv' + '.gz'
         gz_path = ds_path + '/' + gz_name
 
-        gz_paths_cols.append((gz_path, col_name))
+        gz_paths_cols.append((gz_path, col_name, f))
 
     return gz_paths_cols
 
@@ -97,8 +97,8 @@ def t2_get_n_frequents(gz_paths_cols: List[Tuple[str, str]],
         random.shuffle(gz_paths_cols)
 
     # unzip basically
-    gz_paths: List[str] = [gz_paths for gz_paths, _ in gz_paths_cols]
-    cols: List[str] = [cols for _, cols in gz_paths_cols]
+    gz_paths: List[str] = [gz_paths for gz_paths, _, _ in gz_paths_cols]
+    cols: List[str] = [cols for _, cols, _ in gz_paths_cols]
 
     records = []
     missing = set()
